@@ -1,0 +1,23 @@
+{
+  "name": "karma-sonarqube-reporter",
+  "version": "1.0.0",
+  "description": "A karma reporter plugin which generates unit test reports for sonarqube.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fadc80/karma-sonarqube-reporter.git"
+  },
+  "keywords": [
+    "karma-reporter",
+    "sonarqube"
+  ],
+  "author": "Fernando Costa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fadc80/karma-sonarqube-reporter/issues"
+  },
+  "homepage": "https://github.com/fadc80/karma-sonarqube-reporter#readme"
+}
