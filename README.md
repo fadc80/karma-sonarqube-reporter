@@ -81,11 +81,9 @@ module.exports = function (config) {
 
 ## Running
 
-If you are using angular-cli you can use this command
+If you are using angular-cli you can the `npm run test` command.
 
-`npm run test`
-
-Now check the XML files generated on the output folder
+Check the XML files generated on the output folder.
 
 ```command
 ls reports
@@ -95,7 +93,7 @@ firefox.54.0.0.linux.0.0.0.xml
 
 Note the report files' schema is defined on the [Sonarqube Generic Test Data][3] page.
 
-Add the following property to your `sonar-project.properties` 
+Add the following property to your `sonar-project.properties`: 
 
 ```
 sonar.testExecutionReportPaths= \
