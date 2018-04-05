@@ -20,7 +20,7 @@
     "url": "https://github.com/fadc80/karma-sonarqube-reporter/issues"
   },
   "homepage": "https://github.com/fadc80/karma-sonarqube-reporter#readme",
-  "devDependencies": {
+  "dependencies": {
     "glob": "^7.1.2",
     "js2xmlparser": "^3.0.0",
     "mkdirp": "^0.5.1"
