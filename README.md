@@ -95,15 +95,15 @@ firefox.54.0.0.linux.0.0.0.xml
 
 Note the report files' schema is defined on the [Sonarqube Generic Test Data][3] page.
 
-Before executing `sonnar-scanner`...
-
-Add the following property to you `sonar-project.properties` 
+Add the following property to your `sonar-project.properties` 
 
 ```
 sonar.testExecutionReportPaths= \
   reports/chrome.65.0.3325.linux.0.0.0.xml, \
   reports/firefox.54.0.0.linux.0.0.0.xml
 ```
+
+Finally, run `sonnar-scanner` to upload your test reports to a sonarqube server.
   
 That's all!
 
