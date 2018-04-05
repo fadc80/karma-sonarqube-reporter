@@ -23,10 +23,10 @@ plugins: [
 
 ```typescript
 sonarqubeReporter: {
-  basePath: 'src/app',       // test folder 
-  filePattern: '**/*spec.ts' // test file pattern
-  outputFolder: 'reports',   // reports destination
-  encoding: 'utf-8'          // file format
+  basePath: 'src/app',        // test folder 
+  filePattern: '**/*spec.ts', // test file pattern
+  outputFolder: 'reports',    // reports destination
+  encoding: 'utf-8'           // file format
 }
 ```
 
