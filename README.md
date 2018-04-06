@@ -89,7 +89,7 @@ chrome.65.0.3325.linux.0.0.0.xml
 firefox.54.0.0.linux.0.0.0.xml
 ```
 
-The report files' schema is defined on the [Sonarqube Generic Test Data][4] page.
+The report files' schema is defined on the [SonarQube Generic Test Data][4] page.
 
 Now add the following property to your `sonar-project.properties`: 
 
