@@ -23,6 +23,7 @@
   "dependencies": {
     "glob": "^7.1.2",
     "js2xmlparser": "^3.0.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "clone-regexp": "^1.0.1"
   }
 }
