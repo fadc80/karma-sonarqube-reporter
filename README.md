@@ -15,7 +15,7 @@ Adjust your `karma.conf.js` file:
 
 ```typescript
 plugins: [
-      require('karma-sonarqube-reporter')
+  require('karma-sonarqube-reporter')
 ]
 ```
 
