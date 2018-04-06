@@ -14,14 +14,14 @@ const ENCODING = 'utf-8';
 var sonarqubeReporter = function(baseReporterDecorator, config, 
   logger, helper, formatError) { 
   
-  var config = config.sonarqubeReporter || {};
+  var sonarqubeConfig = config.sonarqubeReporter || {};
   
   var pattern = path.join(
-    config.basePath || BASE_PATH, 
-    config.filePattern || FILE_PATTERN);
+    sonarqubeConfig.basePath || BASE_PATH, 
+    sonarqubeConfig.filePattern || FILE_PATTERN);
 
-  var outputFolder = config.outputFolder || OUTPUT_FOLDER;
-  var encoding = config.encoding || ENCODING;
+  var outputFolder = sonarqubeConfig.outputFolder || OUTPUT_FOLDER;
+  var encoding = sonarqubeConfig.encoding || ENCODING;
 
   var reports = {};
 
