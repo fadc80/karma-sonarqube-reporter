@@ -5,7 +5,7 @@ A [Karma][1] reporter plugin for generating [SonarQube][2] generic test executio
 
 Just save the `karma-sonarqube-reporter` as a development dependency
 
-`npm install git+https://github.com/fadc80/karma-sonarqube-reporter.git --save-dev`
+`npm install karma-sonarqube-reporter --save-dev`
 
 ## Configuration
 
