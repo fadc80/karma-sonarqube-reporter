@@ -13,7 +13,7 @@ Just save the `karma-sonarqube-reporter` as a development dependency
 
 Adjust your `karma.conf.js` file: 
 
-**Create new plugin entry**
+**Create a new plugin entry**
 
 ```typescript
 plugins: [
@@ -21,7 +21,7 @@ plugins: [
 ]
 ```
 
-**Add parameters**
+**Add configuration parameters**
 
 ```typescript
 sonarqubeReporter: {
@@ -32,7 +32,7 @@ sonarqubeReporter: {
 }
 ```
 
-**Set reports section**
+**Enable `sonarqube` reporter**
 
 ```typescript
 reporters: ['sonarqube']
