@@ -4,7 +4,7 @@
   "description": "A karma reporter plugin which generates unit test reports for sonarqube.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,10 @@
     "js2xmlparser": "^3.0.0",
     "mkdirp": "^0.5.1",
     "clone-regexp": "^1.0.1"
+  },
+  "devDependencies": {
+    "jasmine": "^3.1.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "mock-require": "^3.0.2"
   }
 }
