@@ -1,5 +1,7 @@
 # karma-sonarqube-reporter
-A [Karma][1] reporter plugin for generating [SonarQube][2] generic test execution data.
+A [Karma][1] reporter plugin for generating [SonarQube][2] generic test execution data.  
+
+[![Build Status](https://travis-ci.org/fadc80/karma-sonarqube-reporter.svg?branch=master)](https://travis-ci.org/fadc80/karma-sonarqube-reporter)
 
 ## Installation
 
