@@ -13,7 +13,7 @@ Just save the `karma-sonarqube-reporter` as a development dependency
 
 Adjust your `karma.conf.js` file: 
 
-1. Create new plugin entry
+**Create new plugin entry**
 
 ```typescript
 plugins: [
@@ -21,7 +21,7 @@ plugins: [
 ]
 ```
 
-2. Add a configuration object
+**Add parameters**
 
 ```typescript
 sonarqubeReporter: {
@@ -32,13 +32,13 @@ sonarqubeReporter: {
 }
 ```
 
-3. Enable it
+**Set reports section**
 
 ```typescript
 reporters: ['sonarqube']
 ```
 
-See below a `karma.conf.js` full example:
+If you prefer a full example:
 
 ```typescript
 module.exports = function (config) {
@@ -93,7 +93,7 @@ firefox.54.0.0.linux.0.0.0.xml
 
 The report files' schema is defined on the [SonarQube Generic Test Data][4] page.
 
-Now add the following property to your `sonar-project.properties`: 
+Add the following property to your `sonar-project.properties`: 
 
 ```
 sonar.testExecutionReportPaths= \
