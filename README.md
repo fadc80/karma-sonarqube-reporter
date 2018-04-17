@@ -32,7 +32,7 @@ sonarqubeReporter: {
 }
 ```
 
-**Set `sonarqube` reporter**
+**Enable the `sonarqube` reporter**
 
 ```typescript
 reporters: ['sonarqube']
