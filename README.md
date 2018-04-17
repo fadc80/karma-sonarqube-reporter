@@ -2,6 +2,7 @@
 A [Karma][1] reporter plugin for generating [SonarQube][2] generic test execution data.  
 
 [![Build Status](https://travis-ci.org/fadc80/karma-sonarqube-reporter.svg?branch=master)](https://travis-ci.org/fadc80/karma-sonarqube-reporter)
+[![Coverage Status](https://coveralls.io/repos/github/fadc80/karma-sonarqube-reporter/badge.svg?branch=master)](https://coveralls.io/github/fadc80/karma-sonarqube-reporter?branch=master)
 
 ## Installation
 
