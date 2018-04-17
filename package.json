@@ -1,6 +1,6 @@
 {
   "name": "karma-sonarqube-reporter",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "A karma reporter plugin which generates unit test reports for sonarqube.",
   "main": "index.js",
   "scripts": {
