@@ -105,7 +105,7 @@ function saveReports(reports, outputFolder) {
 }
 
 function createOutputFolder(outputFolder) {
-  mkdirp(outputFolder, (error) => {
+  mkdirp.sync(outputFolder, (error) => {
     if (error) { 
       throw error 
     }
