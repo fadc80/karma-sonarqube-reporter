@@ -1,7 +1,7 @@
 {
   "name": "karma-sonarqube-reporter",
   "version": "1.0.2",
-  "description": "A karma reporter plugin which generates unit test reports for sonarqube.",
+  "description": "A karma reporter plugin for generating Sonarqube generic test reports",
   "main": "index.js",
   "scripts": {
     "test": "nyc jasmine && nyc report --reporter=text-lcov | coveralls"
