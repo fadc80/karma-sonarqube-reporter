@@ -37,7 +37,7 @@ sonarqubeReporter: {
 reporters: ['sonarqube']
 ```
 
-Click [here][3] to see a full `karma.conf.js` example
+Click [here][3] to see a full example.
 
 
 ## Running
