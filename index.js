@@ -81,7 +81,7 @@ function browserReport(reports, browser) {
 
 function reportFile(report, path) { 
   var reportFile = report.file.find((currentFile) => { 
-    return currentFile['@'].path == path 
+    return currentFile['@'].path == path
   });
   if (reportFile == undefined) {
     reportFile = reportbuilder.createReportFile(path);
@@ -106,9 +106,7 @@ function saveReports(reports, outputFolder) {
 
 function createOutputFolder(outputFolder) {
   mkdirp.sync(outputFolder, (error) => {
-    if (error) { 
-      throw error 
-    }
+    if (error) throw error;
   });
 }
 
@@ -117,7 +115,8 @@ function reportFileName(outputFolder, browserName) {
 }
 
 function formatReportFileName(reportFileName) {
-  return reportFileName.replace(/\s/g, '.').replace(/\(|\)/g,'').toLowerCase() + '.xml';
+  return reportFileName.replace(/\s/g, '.').replace(/\(|\)/g,'')
+    .toLowerCase() + '.xml';
 }
 
 function toXml(report) {
