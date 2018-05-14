@@ -90,7 +90,7 @@ describe('Path finder tests', function() {
 
     it('6th test file match suite 6.4 and description 6.4 (nested)', function() {
       expect(pathFinder.testFilePath('**/*.spec.ts', 'utf-8', 
-        { suite: ['suite6.4'], description: 'description6.4'})).toBe('path/t6.spec.js');
+        { suite: ['suite6.4.1'], description: 'description6.4.1'})).toBe('path/t6.spec.js');
     });
 
   });
