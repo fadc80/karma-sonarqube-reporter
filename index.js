@@ -23,6 +23,9 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   var outputFolder = sonarqubeConfig.outputFolder || OUTPUT_FOLDER;
   var encoding = sonarqubeConfig.encoding || ENCODING;
 
+  var paths = pathfinder.parseTestFiles(
+    pattern, encoding);
+    
   var reports = {};
 
   baseReporterDecorator(this);
@@ -31,7 +34,7 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
 
   this.onSpecComplete = function(browser, result) {
     if (result.success) {
-      this.specSuccess(browser, result);     
+      this.specSuccess(browser, result);   
     }
     else if (result.skipped) {
       this.specSkipped(browser, result);
@@ -43,21 +46,24 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
 
   this.specSuccess = function(browser, result) {
     var report = browserReport(reports, browser);
-    var path = pathfinder.testFilePath(pattern, encoding, result);
+    var path = pathfinder.testFile(paths, 
+      result.suite[0], result.description); 
     reportFile(report, path).testCase.push(
       reportbuilder.createReportTestCaseSuccess(result));
   }
 
   this.specSkipped = function(browser, result) {
     var report = browserReport(reports, browser);
-    var path = pathfinder.testFilePath(pattern, encoding, result);
+    var path = pathfinder.testFile(paths, 
+      result.suite[0], result.description);
     reportFile(report, path).testCase.push(
       reportbuilder.createReportTestCaseSkipped(result));
   };
 
   this.specFailure = function(browser, result) {
     var report = browserReport(reports, browser);
-    var path = pathfinder.testFilePath(pattern, encoding, result);
+    var path = pathfinder.testFile(paths, 
+      result.suite[0], result.description);
     reportFile(report, path).testCase.push(
       reportbuilder.createReportTestCaseFailure(result, 
         stacktrace(result, formatError)));
