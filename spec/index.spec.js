@@ -59,12 +59,12 @@ describe('Sonarqube reporter tests', function() {
   });
   describe('Single browsers', function() {
     it('Report test case success (firefox)', function() {
-      reporter.onSpecComplete({name: 'firefox'}, { success: true, suite: ['s1'], 
-        description: 'd1', time: '1'}); 
-      reporter.onSpecComplete({name: 'firefox'}, { success: true, suite: ['s2'], 
-        description: 'd2', time: '1'});
-      reporter.onSpecComplete({name: 'firefox'}, { success: true, suite: ['s3'], 
-        description: 'd3', time: '1'});
+      reporter.onSpecComplete({name: 'firefox'}, { fullName: 's1 d1', success: true, 
+        suite: ['s1'], description: 'd1', time: '1'}); 
+      reporter.onSpecComplete({name: 'firefox'}, { fullName: 's2 d2', success: true, 
+        suite: ['s2'], description: 'd2', time: '1'});
+      reporter.onSpecComplete({name: 'firefox'}, { fullName: 's3 d3', success: true, 
+        suite: ['s3'], description: 'd3', time: '1'});
       // TODO: assert specSuccess arguments
       expect(reporter.specSuccess.calls.count()).toEqual(3);    
       reporter.onRunComplete({}, {});
@@ -72,12 +72,12 @@ describe('Sonarqube reporter tests', function() {
       expect(reportFileCreated('firefox.xml')).toBe(true);  
     });
     it('Report test case skipped (chrome)', function() {    
-      reporter.onSpecComplete({name: 'chrome'}, { skipped: true, suite: ['s1'], 
-        description: 'd1', time: '2'});
-      reporter.onSpecComplete({name: 'chrome'}, { skipped: true, suite: ['s2'], 
-        description: 'd2', time: '2'});
-      reporter.onSpecComplete({name: 'chrome'}, { skipped: true, suite: ['s3'], 
-        description: 'd3', time: '2'});
+      reporter.onSpecComplete({name: 'chrome'}, { fullName: 's1 d1', skipped: true, 
+        suite: ['s1'], description: 'd1', time: '2'});
+      reporter.onSpecComplete({name: 'chrome'}, { fullName: 's2 d2', skipped: true, 
+        suite: ['s2'], description: 'd2', time: '2'});
+      reporter.onSpecComplete({name: 'chrome'}, { fullName: 's3 d3', skipped: true, 
+        suite: ['s3'], description: 'd3', time: '2'});
       // TODO: assert specSkipped arguments
       expect(reporter.specSkipped.calls.count()).toEqual(3);
       reporter.onRunComplete({}, {});
@@ -85,11 +85,11 @@ describe('Sonarqube reporter tests', function() {
       expect(reportFileCreated('chrome.xml')).toBe(true);
     });
     it('Report rest case failure (ie)', function() {
-      reporter.onSpecComplete({name: 'ie'}, { suite: ['s1'], 
+      reporter.onSpecComplete({name: 'ie'}, { fullName: 's1 d1', suite: ['s1'], 
         description: 'd1', time: '3', log: ['e1']});
-      reporter.onSpecComplete({name: 'ie'}, { suite: ['s2'], 
+      reporter.onSpecComplete({name: 'ie'}, { fullName: 's2 d2', suite: ['s2'], 
         description: 'd2', time: '3', log: ['e2']});
-      reporter.onSpecComplete({name: 'ie'}, { suite: ['s3'], 
+      reporter.onSpecComplete({name: 'ie'}, { fullName: 's3 d3', suite: ['s3'], 
         description: 'd3', time: '3', log: ['e3']});
       // TODO: assert specFailure arguments
       expect(reporter.specFailure).toHaveBeenCalled();
@@ -100,12 +100,12 @@ describe('Sonarqube reporter tests', function() {
   });
   describe('Multiple browsers (firefox, chrome, ie)', function() {
     it('Report test case success', function() {
-      reporter.onSpecComplete({name: 'firefox'}, { success: true, suite: ['s1'], 
-        description: 'd1', time: '1'});
-      reporter.onSpecComplete({name: 'chrome'}, { success: true, suite: ['s1'], 
-        description: 'd1', time: '1'});
-      reporter.onSpecComplete({name: 'ie'}, { success: true, suite: ['s1'], 
-        description: 'd1', time: '1'});
+      reporter.onSpecComplete({name: 'firefox'}, { fullName: 's1 d1', success: true, 
+        suite: ['s1'], description: 'd1', time: '1'});
+      reporter.onSpecComplete({name: 'chrome'}, { fullName: 's1 d1', success: true, 
+        suite: ['s1'], description: 'd1', time: '1'});
+      reporter.onSpecComplete({name: 'ie'}, { fullName: 's1 d1', success: true, 
+        suite: ['s1'], description: 'd1', time: '1'});
       // TODO: assert specSuccess arguments
       expect(reporter.specSuccess.calls.count()).toEqual(3);
       reporter.onRunComplete({}, {});
@@ -115,12 +115,12 @@ describe('Sonarqube reporter tests', function() {
       expect(reportFileCreated('ie.xml')).toBe(true);
     });
     it('Report test case skipped', function() {
-      reporter.onSpecComplete({name: 'firefox'}, { skipped: true, suite: ['s2'], 
-        description: 'd2', time: '2'});
-      reporter.onSpecComplete({name: 'chrome'}, { skipped: true, suite: ['s2'], 
-        description: 'd2', time: '2'});
-      reporter.onSpecComplete({name: 'ie'}, { skipped: true, suite: ['s2'], 
-        description: 'd2', time: '2'});
+      reporter.onSpecComplete({name: 'firefox'}, { fullName: 's2 d2', skipped: true, 
+        suite: ['s2'], description: 'd2', time: '2'});
+      reporter.onSpecComplete({name: 'chrome'}, { fullName: 's2 d2', skipped: true, 
+        suite: ['s2'], description: 'd2', time: '2'});
+      reporter.onSpecComplete({name: 'ie'}, { fullName: 's2 d2', skipped: true, 
+        suite: ['s2'], description: 'd2', time: '2'});
       // TODO: assert specSkipped arguments
       expect(reporter.specSkipped.calls.count()).toEqual(3);
       reporter.onRunComplete({}, {});
@@ -130,11 +130,11 @@ describe('Sonarqube reporter tests', function() {
       expect(reportFileCreated('ie.xml')).toBe(true);
     });
     it('Report rest case failure', function() {
-      reporter.onSpecComplete({name: 'firefox'}, { suite: ['s3'], 
+      reporter.onSpecComplete({name: 'firefox'}, { fullName: 's3 d3', suite: ['s3'], 
         description: 'd3', time: '3', log: ['e3']});
-      reporter.onSpecComplete({name: 'chrome'}, { suite: ['s3'], 
+      reporter.onSpecComplete({name: 'chrome'}, { fullName: 's3 d3', suite: ['s3'], 
         description: 'd3', time: '3', log: ['e3']});
-      reporter.onSpecComplete({name: 'ie'}, { suite: ['s3'], 
+      reporter.onSpecComplete({name: 'ie'}, { fullName: 's3 d3', suite: ['s3'], 
         description: 'd3', time: '3', log: ['e3.1', 'e3.2']});
       // TODO: assert specFailure arguments
       expect(reporter.specFailure.calls.count()).toEqual(3);
