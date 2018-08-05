@@ -23,7 +23,10 @@ module.exports = function (config) {
       basePath: 'src/app',
       outputFolder: 'reports',
       filePattern: '**/*spec.ts',
-      encoding: 'utf-8'
+      encoding: 'utf-8',
+      reportName: (metadata) => {
+        return metadata.concat('xml').join('.');
+      }
     },
     angularCli: {
       environment: 'dev'

@@ -20,34 +20,25 @@ plugins: [
 ]
 ```
 
-**Add configuration parameters (optional)**
+**Add configuration parameters**
 
 ```javascript
-// Default configuration
+// Configuration example
 sonarqubeReporter: {
   basePath: 'src/app',        // test files folder
   filePattern: '**/*spec.ts', // test files glob pattern
-  outputFolder: 'reports',    // report file destination
-  encoding: 'utf-8'           // report file encoding
-  reportName: (metadata) => { // report file name callback
-    // metadata[0] = browser name
-    // metadata[1] = browser version
-    // metadata[2] = plataform name
-    // metadata[3] = plataform version
-    // e.g. firefox.54.0.0.linux.0.0.0.xml
-    // e.g. chrome.65.0.3325.linux.0.0.0.xml
-    return metadata.concat('xml').join('.');
-}
-```
-
-Note you can provide a custom `reportName` callback. For example:
-
-```typescript
-// Custom report name
-(metadata) => {
-    // e.g. firefox/result.xml
-    // e.g. chrome/result.xml
-    return metadata[0].concat('/result.xml');
+  outputFolder: 'reports',    // report destination
+  encoding: 'utf-8',          // report encoding
+  reportName: (metadata) => { // report name callback
+    /* Report metadata content:
+     * - metadata[0] = browser name
+     * - metadata[1] = browser version
+     * - metadata[2] = plataform name
+     * - metadata[3] = plataform version
+     * e.g. firefox.54.0.0.linux.0.0.0.xml
+     * e.g. chrome.65.0.3325.linux.0.0.0.xml
+     */
+     return metadata.concat('xml').join('.');
 }
 ```
 
@@ -66,8 +57,8 @@ If your project uses [Angular CLI][4] run `ng test` and check the output folder.
 
 ```command
 $ ls reports
-chrome.65.0.3325.linux.0.0.0.xml
 firefox.54.0.0.linux.0.0.0.xml
+chrome.65.0.3325.linux.0.0.0.xml
 ```
 The report files' schema is defined on the [SonarQube Generic Test Data][5] page.
 
