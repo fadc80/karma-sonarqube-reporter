@@ -1,6 +1,6 @@
 {
   "name": "karma-sonarqube-reporter",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "A karma reporter plugin for generating Sonarqube generic test reports",
   "main": "index.js",
   "scripts": {
@@ -30,8 +30,9 @@
     "coveralls": "^3.0.0",
     "jasmine": "^3.1.0",
     "jasmine-spec-reporter": "^4.2.1",
+    "lodash": "^4.17.10",
     "mock-require": "^3.0.2",
     "nyc": "^11.6.0",
-    "lodash": "^4.17.10"
+    "rimraf": "^2.6.2"
   }
 }

@@ -2,30 +2,34 @@ var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
 var js2xmlparser = require('js2xmlparser');
-
 var pathfinder = require('./lib/path-finder');
 var reportbuilder = require('./lib/report-builder');
 
 const BASE_PATH = 'src/app/';
-const OUTPUT_FOLDER = '/reports';
+const OUTPUT_FOLDER = 'reports';
 const FILE_PATTERN = '**/*spec.ts';
 const ENCODING = 'utf-8';
 
-var sonarqubeReporter = function(baseReporterDecorator, config, 
-  logger, helper, formatError) { 
-  
+const REPORT_NAME = (metadata) => {
+    return metadata.concat('xml').join('.');
+}
+
+var sonarqubeReporter = function(baseReporterDecorator, config,
+  logger, helper, formatError) {
+
   var sonarqubeConfig = config.sonarqubeReporter || {};
-  
+
   var pattern = path.join(
-    sonarqubeConfig.basePath || BASE_PATH, 
+    sonarqubeConfig.basePath || BASE_PATH,
     sonarqubeConfig.filePattern || FILE_PATTERN);
 
   var outputFolder = sonarqubeConfig.outputFolder || OUTPUT_FOLDER;
   var encoding = sonarqubeConfig.encoding || ENCODING;
+  var reportName = sonarqubeConfig.reportName || REPORT_NAME;
 
   var paths = pathfinder.parseTestFiles(
     pattern, encoding);
-    
+
   var reports = {};
 
   baseReporterDecorator(this);
@@ -34,59 +38,62 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
 
   this.onSpecComplete = function(browser, result) {
     if (result.success) {
-      this.specSuccess(browser, result);   
+      this.specSuccess(browser, result);
     }
     else if (result.skipped) {
       this.specSkipped(browser, result);
     }
     else {
-      this.specFailure(browser, result);     
+      this.specFailure(browser, result);
     }
   }
 
   this.specSuccess = function(browser, result) {
-    var report = browserReport(reports, browser);
-    var path = pathfinder.testFile(paths, 
-      result.suite[0], result.description); 
+    var report = browserReport(reports,
+      reportName(metadata(browser.name)));
+    var path = pathfinder.testFile(paths,
+      result.suite[0], result.description);
     reportFile(report, path).testCase.push(
       reportbuilder.createReportTestCaseSuccess(result));
   }
 
   this.specSkipped = function(browser, result) {
-    var report = browserReport(reports, browser);
-    var path = pathfinder.testFile(paths, 
+    var report = browserReport(reports,
+      reportName(metadata(browser.name)));
+    var path = pathfinder.testFile(paths,
       result.suite[0], result.description);
     reportFile(report, path).testCase.push(
       reportbuilder.createReportTestCaseSkipped(result));
   };
 
   this.specFailure = function(browser, result) {
-    var report = browserReport(reports, browser);
-    var path = pathfinder.testFile(paths, 
+    var report = browserReport(reports,
+      reportName(metadata(browser.name)));
+    var path = pathfinder.testFile(paths,
       result.suite[0], result.description);
     reportFile(report, path).testCase.push(
-      reportbuilder.createReportTestCaseFailure(result, 
+      reportbuilder.createReportTestCaseFailure(result,
         stacktrace(result, formatError)));
   };
 
   this.onRunComplete = function(browsersCollection, results) {
-      saveReports(reports, outputFolder);
+    saveReports(outputFolder, reports);
   };
 };
 
-function browserReport(reports, browser) {
-  var reportKey = Object.keys(reports).find((currentKey) => {
-     return currentKey == browser.name }
+function browserReport(reports, reportKey) {
+  var foundKey = Object.keys(reports).find((key) => {
+     return key == reportKey }
   );
-  if (reportKey == undefined) {
+  if (foundKey == undefined) {
     report = reportbuilder.createReport();
-    reports[browser.name] = report;
+    reports[reportKey] = report;
   }
-  return reports[browser.name];
+  return reports[reportKey];
 }
 
-function reportFile(report, path) { 
-  var reportFile = report.file.find((currentFile) => { 
+function reportFile(report, path) {
+  var reportFile = report.file.find((currentFile) => {
     return currentFile['@'].path == path
   });
   if (reportFile == undefined) {
@@ -97,32 +104,34 @@ function reportFile(report, path) {
 }
 
 function stacktrace(result, formatError) {
-  return result.log.reduce((previousLog, currentLog)=> {
-    return previousLog + formatError(currentLog);
+  return result.log.map(formatError).reduce(
+    (errors, value)=> { return errors.concat(value) });
+}
+
+function saveReports(folder, reports) {
+  Object.keys(reports).forEach((report) => {
+    saveReport(path.join(folder, report),
+      reports[report]);
   });
 }
 
-function saveReports(reports, outputFolder) {
-  createOutputFolder(outputFolder);
-  Object.keys(reports).forEach((browserName)=> {
-    fs.writeFileSync(reportFileName(outputFolder, browserName), 
-      toXml(reports[browserName]));
-  });
+function saveReport(filePath, data) {
+  createFolder(filePath);
+  createFile(filePath, data);
 }
 
-function createOutputFolder(outputFolder) {
-  mkdirp.sync(outputFolder, (error) => {
-    if (error) throw error;
-  });
+function createFolder(filePath) {
+  mkdirp.sync(path.dirname(filePath),
+    (error) =>  { if (error) throw error; }
+  );
 }
 
-function reportFileName(outputFolder, browserName) {
-  return path.join(outputFolder, formatReportFileName(browserName));
+function createFile(filePath, data) {
+  fs.writeFileSync(filePath, toXml(data));
 }
 
-function formatReportFileName(reportFileName) {
-  return reportFileName.replace(/\s/g, '.').replace(/\(|\)/g,'')
-    .toLowerCase() + '.xml';
+function metadata(report) {
+  return report.replace(/\(|\)/gm,'').split(" ");
 }
 
 function toXml(report) {
@@ -130,13 +139,13 @@ function toXml(report) {
 }
 
 sonarqubeReporter.$inject = [
- 'baseReporterDecorator', 
- 'config', 
- 'logger', 
- 'helper', 
+ 'baseReporterDecorator',
+ 'config',
+ 'logger',
+ 'helper',
  'formatError'
 ];
 
 module.exports = {
-  'reporter:sonarqube': ['type', sonarqubeReporter] 
+  'reporter:sonarqube': ['type', sonarqubeReporter]
 };

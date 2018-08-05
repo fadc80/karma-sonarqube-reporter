@@ -10,7 +10,7 @@ A [Karma][1] reporter plugin for generating [SonarQube][2] generic test reports.
 
 ## Configuration
 
-Adjust your `karma.conf.js` file: 
+Adjust your `karma.conf.js` file:
 
 **Create a new plugin entry**
 
@@ -20,14 +20,34 @@ plugins: [
 ]
 ```
 
-**Add configuration parameters**
+**Add configuration parameters (optional)**
+
+```javascript
+// Default configuration
+sonarqubeReporter: {
+  basePath: 'src/app',        // test files folder
+  filePattern: '**/*spec.ts', // test files glob pattern
+  outputFolder: 'reports',    // report file destination
+  encoding: 'utf-8'           // report file encoding
+  reportName: (metadata) => { // report file name callback
+    // metadata[0] = browser name
+    // metadata[1] = browser version
+    // metadata[2] = plataform name
+    // metadata[3] = plataform version
+    // e.g. firefox.54.0.0.linux.0.0.0.xml
+    // e.g. chrome.65.0.3325.linux.0.0.0.xml
+    return metadata.concat('xml').join('.');
+}
+```
+
+Note you can provide a custom `reportName` callback. For example:
 
 ```typescript
-sonarqubeReporter: {
-  basePath: 'src/app',        // test folder 
-  filePattern: '**/*spec.ts', // test file pattern
-  outputFolder: 'reports',    // reports destination
-  encoding: 'utf-8'           // file format
+// Custom report name
+(metadata) => {
+    // e.g. firefox/result.xml
+    // e.g. chrome/result.xml
+    return metadata[0].concat('/result.xml');
 }
 ```
 
@@ -49,19 +69,18 @@ $ ls reports
 chrome.65.0.3325.linux.0.0.0.xml
 firefox.54.0.0.linux.0.0.0.xml
 ```
-
 The report files' schema is defined on the [SonarQube Generic Test Data][5] page.
 
-Add the following property to your `sonar-project.properties`: 
+Add the following property to your `sonar-project.properties`:
 
 ```
 sonar.testExecutionReportPaths= \
-  reports/chrome.65.0.3325.linux.0.0.0.xml, \
-  reports/firefox.54.0.0.linux.0.0.0.xml
+  reports/firefox.54.0.0.linux.0.0.0.xml, \
+  reports/chrome.65.0.3325.linux.0.0.0.xml
 ```
 
 Finally, start [SonarQube Scanner][6] on your project folder.
-  
+
 That's all!
 
 [1]: https://karma-runner.github.io/2.0/index.html
