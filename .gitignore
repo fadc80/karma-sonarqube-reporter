@@ -9,3 +9,11 @@ node_modules/
 
 # Temp folder
 reports
+
+# VSCODE
+.vscode/
+project.code-workspace
+
+# Sonarqube
+.scannerwork/
+.sonarlint/
