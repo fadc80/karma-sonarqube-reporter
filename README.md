@@ -32,13 +32,11 @@ sonarqubeReporter: {
   encoding: 'utf-8',          // report encoding
   reportName: (metadata) => { // report name callback
     /**
-     * Report metadata content:
+     * Report metadata array content:
      * - metadata[0] = browser name
      * - metadata[1] = browser version
      * - metadata[2] = plataform name
      * - metadata[3] = plataform version
-     * e.g. firefox.54.0.0.linux.0.0.0.xml
-     * e.g. chrome.65.0.3325.linux.0.0.0.xml
      */
      return metadata.concat('xml').join('.');
   }
