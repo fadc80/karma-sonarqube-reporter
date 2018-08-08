@@ -11,6 +11,7 @@ jdk:
   - open-jdk-8
 
 script:
+  - npm run test
   - sonar-scanner
 
 cache:
