@@ -10,7 +10,7 @@ addons:
 jdk:
   - open-jdk-8
 
- script:
+script:
   - sonar-scanner
 
 cache:
