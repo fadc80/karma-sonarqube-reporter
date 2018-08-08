@@ -6,6 +6,7 @@ node_modules/
 
 # Code coverage
 .nyc_output
+coverage
 
 # Temp folder
 reports

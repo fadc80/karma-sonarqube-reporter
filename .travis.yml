@@ -1,3 +1,14 @@
+dist: trusty
+sudo: required
+addons:
+  sonarcloud:
+    organization: fadc80-github
+    token:
+      secure: TcTFLdVhLEzLvv7/XnA/W4VJS4oBEMnztv5dt+QJ7rvvjVNFgvbpdyS66wTDwrOhgj5kadGP9iYpLxs5iwYonptQ8sBf46Ip/wilmo3McclyllMHZ6Gd8pBUubEskq0NxRKaBg+XuSgz6Y9Tkfume6MTo96bNloXvBLyZma2rkzDT+RUSn8gwWc82XrTBli5j4+0/QomQFLiKEdiKPrARcGSxIHkfl6W8smXtyvh7YK3wKQizmJu2MKtJGn9JMxWhrLy1DoQV440MrJ66Kl21ZWsOft2LXRiNe2p5pR1iUlFh3wI7/6+fozbKmX5hXokmL4nm1AQiuhda4KsDF6kCCFU9kBlyqoodJuzYfA3pi98Nzn0/GkscBpPw/5dd1UhQbzDWMsfk1gf1ZKVBgH03WfUjP7/6ZV9OJUvlwsqUjjc4VhlsJZ0zzygUDUcwNs5sEpB7zcHFkaFxJ79F48ZV+xy7dyEnGYxL8Ih3L2LpuKJZ7WSFyQI1NBjZVi00TVpYxIwW1XoW+VkHCu8y9gjU7V3eLFGNpDGhHyk3l6+br1O6JyhehvZhrCMyjPYxDOp8lsKmuu2xWiX1RNBIsRG08sHh49hIq1aVbKMzLNl81//fMJRPaU1o+N/fOAjEjgL9/MVbIzJ5WYXDOxXJkRU4E4JFR/8ulkAT243/SwuvQE=
+jdk:
+- open-jdk-8
+script:
+- sonar-scanner
 language: node_js
 node_js:
-  - "8"
+- '8'
