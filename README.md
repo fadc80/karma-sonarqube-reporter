@@ -1,4 +1,4 @@
-# karma-sonarqube-reporter
+# karma-sonarqube-reporter-custom
 [![npm version](https://img.shields.io/npm/v/karma-sonarqube-reporter.svg?style=flat-square)](https://www.npmjs.com/package/karma-sonarqube-reporter)
 [![Build Status](https://travis-ci.org/fadc80/karma-sonarqube-reporter.svg?branch=master)](https://travis-ci.org/fadc80/karma-sonarqube-reporter)
 [![Coverage Status](https://coveralls.io/repos/github/fadc80/karma-sonarqube-reporter/badge.svg?branch=master)](https://coveralls.io/github/fadc80/karma-sonarqube-reporter?branch=master)  
