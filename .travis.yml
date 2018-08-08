@@ -10,7 +10,8 @@ jdk:
 script:
   - sonar-scanner
 cache:
-  - '$HOME/.sonar/cache'
+  directories:
+    - '$HOME/.sonar/cache'
 language: node_js
 node_js:
   - '8'
