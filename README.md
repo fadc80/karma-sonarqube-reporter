@@ -30,6 +30,26 @@ sonarqubeReporter: {
   filePattern: '**/*spec.ts', // test files glob pattern
   outputFolder: 'reports',    // report destination
   encoding: 'utf-8',          // report encoding
+  rootElementName: 'testExecutions', //root element name of the test execution report, default value is testExecutions if you dont provide any value. 
+  /**
+   * For Sonarqube version prior to 6.2, it expects below format for test execution report
+   * 
+   * <unitTest version='1'>
+      <file path='test/webapp/sample/simpleJunitSpec.ts'>
+          <testCase name='Simple Test' duration='2'/>
+      </file>
+    </unitTest>
+
+  From 6.2 onwards, Sonarqube expects below format for test execution report
+
+   <testExecutions version='1'>
+      <file path='test/webapp/sample/simpleJunitSpec.ts'>
+          <testCase name='Simple Test' duration='2'/>
+      </file>
+    </testExecutions>
+
+    To support both format, rootElement property can be be used.
+   */ 
   reportName: (metadata) => { // report name callback
     /**
      * Report metadata array content:
@@ -63,13 +83,22 @@ chrome.65.0.3325.linux.0.0.0.xml
 ```
 The report files' schema is defined on the [SonarQube Generic Test Data][5] page.
 
-Add the following property to your `sonar-project.properties`:
+Add the following property to your `sonar-project.properties`: (For version 6.2 onwards)
 
 ```
 sonar.testExecutionReportPaths= \
   reports/firefox.54.0.0.linux.0.0.0.xml, \
   reports/chrome.65.0.3325.linux.0.0.0.xml
 ```
+
+Add the following property to your `sonar-project.properties`: (For version prior to 6.2)
+
+```
+sonar.genericcoverage.unitTestReportPaths= \
+  reports/firefox.54.0.0.linux.0.0.0.xml, \
+  reports/chrome.65.0.3325.linux.0.0.0.xml
+```
+
 
 Finally, start [SonarQube Scanner][6] on your project folder.
 
