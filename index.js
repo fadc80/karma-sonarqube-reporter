@@ -26,6 +26,7 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   var outputFolder = sonarqubeConfig.outputFolder || OUTPUT_FOLDER;
   var encoding = sonarqubeConfig.encoding || ENCODING;
   var reportName = sonarqubeConfig.reportName || REPORT_NAME;
+  var rootElementName = sonarqubeConfig.legacyMode ? 'unitTest' : 'testExecutions';
 
   var paths = pathfinder.parseTestFiles(
     pattern, encoding);
@@ -77,7 +78,7 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   };
 
   this.onRunComplete = function(browsersCollection, results) {
-    saveReports(outputFolder, reports);
+    saveReports(outputFolder, reports, rootElementName);
   };
 };
 
@@ -108,16 +109,16 @@ function stacktrace(result, formatError) {
     (errors, value)=> { return errors.concat(value) });
 }
 
-function saveReports(folder, reports) {
+function saveReports(folder, reports, rootElementName) {
   Object.keys(reports).forEach((report) => {
     saveReport(path.join(folder, report),
-      reports[report]);
+      reports[report], rootElementName);
   });
 }
 
-function saveReport(filePath, data) {
+function saveReport(filePath, data, rootElementName) {
   createFolder(filePath);
-  createFile(filePath, data);
+  createFile(filePath, data, rootElementName);
 }
 
 function createFolder(filePath) {
@@ -126,16 +127,16 @@ function createFolder(filePath) {
   );
 }
 
-function createFile(filePath, data) {
-  fs.writeFileSync(filePath, toXml(data));
+function createFile(filePath, data, rootElementName) {
+  fs.writeFileSync(filePath, toXml(data, rootElementName));
 }
 
 function metadata(report) {
   return report.replace(/\(|\)/gm,'').split(" ");
 }
 
-function toXml(report) {
-  return js2xmlparser.parse('testExecutions', report);
+function toXml(report, rootElementName) {
+  return js2xmlparser.parse(rootElementName, report);
 }
 
 sonarqubeReporter.$inject = [
