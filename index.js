@@ -13,7 +13,6 @@ const ENCODING = 'utf-8';
 const REPORT_NAME = (metadata) => {
     return metadata.concat('xml').join('.');
 }
-const DEFAULT_ROOT_ELEMENT_NAME = 'testExecutions';
 
 var sonarqubeReporter = function(baseReporterDecorator, config,
   logger, helper, formatError) {
@@ -27,7 +26,7 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   var outputFolder = sonarqubeConfig.outputFolder || OUTPUT_FOLDER;
   var encoding = sonarqubeConfig.encoding || ENCODING;
   var reportName = sonarqubeConfig.reportName || REPORT_NAME;
-  var rootElementName = sonarqubeConfig.rootElementName || DEFAULT_ROOT_ELEMENT_NAME;
+  var rootElementName = sonarqubeConfig.legacyMode ? 'unitTest' : 'testExecutions';
 
   var paths = pathfinder.parseTestFiles(
     pattern, encoding);
@@ -79,7 +78,7 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   };
 
   this.onRunComplete = function(browsersCollection, results) {
-    saveReports(outputFolder, reports,rootElementName);
+    saveReports(outputFolder, reports, rootElementName);
   };
 };
 
@@ -113,7 +112,7 @@ function stacktrace(result, formatError) {
 function saveReports(folder, reports, rootElementName) {
   Object.keys(reports).forEach((report) => {
     saveReport(path.join(folder, report),
-      reports[report],rootElementName);
+      reports[report], rootElementName);
   });
 }
 
