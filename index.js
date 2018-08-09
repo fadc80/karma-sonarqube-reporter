@@ -9,6 +9,7 @@ const BASE_PATH = 'src/app/';
 const OUTPUT_FOLDER = 'reports';
 const FILE_PATTERN = '**/*spec.ts';
 const ENCODING = 'utf-8';
+const LEGACY_MODE = false;
 
 const REPORT_NAME = (metadata) => {
     return metadata.concat('xml').join('.');
@@ -26,7 +27,7 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   var outputFolder = sonarqubeConfig.outputFolder || OUTPUT_FOLDER;
   var encoding = sonarqubeConfig.encoding || ENCODING;
   var reportName = sonarqubeConfig.reportName || REPORT_NAME;
-  var rootElementName = sonarqubeConfig.legacyMode ? 'unitTest' : 'testExecutions';
+  var legacyMode = sonarqubeConfig.legacyMode || LEGACY_MODE;
 
   var paths = pathfinder.parseTestFiles(
     pattern, encoding);
@@ -78,7 +79,8 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   };
 
   this.onRunComplete = function(browsersCollection, results) {
-    saveReports(outputFolder, reports, rootElementName);
+    saveReports(outputFolder, reports, legacyMode ?
+      'unitTest' : 'testExecutions');
   };
 };
 
