@@ -7,6 +7,7 @@ const config1 = {
   sonarqubeReporter: {
     outputFolder: 'reports/config1',
     encoding: 'utf-8',
+    legacyMode: false,
     reportName: (metadata) => {
       return metadata[0].concat('.xml');
     }
@@ -17,6 +18,7 @@ const config2 = {
   sonarqubeReporter: {
     outputFolder: 'reports/config2',
     encoding: 'iso-8859-1',
+    legacyMode: true,
     reportName: (metadata) => {
       return metadata[0].concat(
         '/result.xml');
@@ -41,6 +43,7 @@ describe('Sonarqube reporter tests', function() {
         }
       },
       testFile: function(paths, describe, it) {
+        var testFilePath = undefined;
         if (describe == 's1' && it == 'd1') { testFilePath = 'test/file1/path'; }
         if (describe == 's2' && it == 'd2') { testFilePath = 'test/file1/path'; }
         if (describe == 's3' && it == 'd3') { testFilePath = 'test/file3/path'; }
@@ -49,11 +52,11 @@ describe('Sonarqube reporter tests', function() {
     });
   });
   beforeEach(function() {
-    sonarqubeReporter = mock.reRequire('../index')['reporter:sonarqube'][1];
-    baseReporterDecorator = jasmine.createSpy('baseReporterDecorator');
-    helper = jasmine.createSpy('helper');
-    logger = jasmine.createSpy('logger');
-    formatError = (error) => { return error };
+    const sonarqubeReporter = mock.reRequire('../index')['reporter:sonarqube'][1];
+    const baseReporterDecorator = jasmine.createSpy('baseReporterDecorator');
+    const helper = jasmine.createSpy('helper');
+    const logger = jasmine.createSpy('logger');
+    const formatError = (error) => { return error };
     reporterDefault = initReporter({});
     reporterConfig1 = initReporter(config1);
     reporterConfig2 = initReporter(config2);
