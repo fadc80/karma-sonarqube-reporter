@@ -13,7 +13,7 @@ reports
 
 # VSCODE
 .vscode/
-project.code-workspace
+karma-sonarqube-reporter.code-workspace
 
 # Sonarqube
 .scannerwork/
