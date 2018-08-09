@@ -89,8 +89,7 @@ function browserReport(reports, reportKey) {
      return key == reportKey }
   );
   if (foundKey == undefined) {
-    report = reportbuilder.createReport();
-    reports[reportKey] = report;
+    reports[reportKey] = reportbuilder.createReport();
   }
   return reports[reportKey];
 }
