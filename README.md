@@ -33,7 +33,7 @@ sonarqubeReporter: {
   legacyMode: false,          // report for Sonarqube < 6.2 (disabled)
   reportName: (metadata) => { // report name callback
     /**
-     * Report metadata array content:
+     * Report metadata array:
      * - metadata[0] = browser name
      * - metadata[1] = browser version
      * - metadata[2] = plataform name
