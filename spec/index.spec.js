@@ -54,6 +54,7 @@ describe('Sonarqube reporter tests', function() {
       }
     });
   });
+
   beforeEach(function() {
     const sonarqubeReporter = mock.reRequire('../index')['reporter:sonarqube'][1];
     const baseReporterDecorator = jasmine.createSpy('baseReporterDecorator');
@@ -70,32 +71,39 @@ describe('Sonarqube reporter tests', function() {
       spyOn(reporter, "specSkipped").and.callThrough();
       spyOn(reporter, "specFailure").and.callThrough();
       return reporter;
-    };
+    }
   });
+
   afterAll(function() {
     mock.stop('../lib/path-finder');
   });
+
   afterEach(function() {
     clearReports('reports');
   });
+
   describe('Reporter using default configuration', function() {
     it('Sonarqube reporter is defined', function() {
       expect(reporterDefault).toBeDefined();
     });
   });
+
   describe('Reporter using custom configuration 1', function() {
     it('Sonarqube reporter is defined', function() {
       expect(reporterConfig1).toBeDefined();
     });
   });
+
   describe('Reporter using custom configuration 2', function() {
     it('Sonarqube reporter is defined', function() {
       expect(reporterConfig2).toBeDefined();
     });
   });
+
   describe('Karma runner configured to single browser', function() {
     describe('Reporter using default configuration', function() {
       it('All test cases passed (firefox)', function() {
+
         reporterDefault.onSpecComplete({name: firefox}, { fullName: 's1 d1',
           success: true, suite: ['s1'], description: 'd1', time: '1'});
         reporterDefault.onSpecComplete({name: firefox}, { fullName: 's2 d2',
@@ -103,9 +111,12 @@ describe('Sonarqube reporter tests', function() {
         reporterDefault.onSpecComplete({name: firefox}, { fullName: 's3 d3',
           success: true, suite: ['s3'], description: 'd3', time: '3'});
         reporterDefault.onRunComplete({}, {});
+
         const reportFilePath = 'reports/firefox.1.0.0.linux.1.0.0.xml';
+
         expect(reporterDefault.specSuccess.calls.count()).toEqual(3);
         expect(isReportFileCreated(reportFilePath)).toBe(true);
+
         chai.expect(readReportFile(reportFilePath)).xml.to.equal(
           `<?xml version='1.0'?>
            <testExecutions version='1'>
@@ -120,8 +131,10 @@ describe('Sonarqube reporter tests', function() {
         );
       });
     });
+
     describe('Reporter using custom configuration 1', function() {
       it('All test cases skipped (chrome)', function() {
+
         reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's1 d1',
           skipped: true, suite: ['s1'], description: 'd1', time: '1'});
         reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2 d2',
@@ -129,9 +142,12 @@ describe('Sonarqube reporter tests', function() {
         reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's3 d3',
           skipped: true, suite: ['s3'], description: 'd3', time: '3'});
         reporterConfig1.onRunComplete({}, {});
+
         const reportFilePath = 'reports/config1/chrome.xml';
+
         expect(reporterConfig1.specSkipped.calls.count()).toEqual(3);
         expect(isReportFileCreated(reportFilePath)).toBe(true);
+
         chai.expect(readReportFile(reportFilePath)).xml.to.equal(
           `<?xml version='1.0'?>
            <testExecutions version='1'>
@@ -152,8 +168,10 @@ describe('Sonarqube reporter tests', function() {
         );
       });
     });
+
     describe('Reporter using custom configuration 2', function() {
       it('All test cases failed (ie)', function() {
+
         reporterConfig2.onSpecComplete({name: ie}, { fullName: 's1 d1',
           suite: ['s1'], description: 'd1', time: '1', log: ['e1']});
         reporterConfig2.onSpecComplete({name: ie}, { fullName: 's2 d2',
@@ -161,10 +179,12 @@ describe('Sonarqube reporter tests', function() {
         reporterConfig2.onSpecComplete({name: ie}, { fullName: 's3 d3',
           suite: ['s3'], description: 'd3', time: '3', log: ['e3']});
         reporterConfig2.onRunComplete({}, {});
+
         const reportFilePath = 'reports/config2/ie/result.xml';
+
         expect(reporterConfig2.specFailure.calls.count()).toEqual(3);
         expect(isReportFileCreated(reportFilePath)).toBe(true);
-        console.log(readReportFile(reportFilePath));
+
         chai.expect(readReportFile(reportFilePath)).xml.to.equal(
           `<?xml version='1.0'?>
            <unitTest version='1'>
@@ -186,9 +206,11 @@ describe('Sonarqube reporter tests', function() {
       });
     });
   });
+
   describe('Karma runner configured to multiple browsers', function() {
     describe('Reporter using default configuration', function() {
       it('All test cases passed', function() {
+
         reporterDefault.onSpecComplete({name: firefox}, { fullName: 's1 d1',
           success: true, suite: ['s1'], description: 'd1', time: '1'});
         reporterDefault.onSpecComplete({name: chrome}, { fullName: 's1 d1',
@@ -196,9 +218,9 @@ describe('Sonarqube reporter tests', function() {
         reporterDefault.onSpecComplete({name: ie}, { fullName: 's1 d1',
           success: true, suite: ['s1'], description: 'd1', time: '1'});
         reporterDefault.onRunComplete({}, {});
-        // TODO: assert specSuccess arguments
-        // TODO: assert report file content
+
         expect(reporterDefault.specSuccess.calls.count()).toEqual(3);
+
         expect(isReportFileCreated('reports/firefox.1.0.0.linux.1.0.0.xml')).toBe(true);
         expect(isReportFileCreated('reports/chrome.1.0.0.linux.1.0.0.xml')).toBe(true);
         expect(isReportFileCreated('reports/ie.1.0.0.linux.1.0.0.xml')).toBe(true);
@@ -206,6 +228,7 @@ describe('Sonarqube reporter tests', function() {
     });
     describe('Reporter using custom configuration 1', function() {
       it('All test cases skipped', function() {
+
         reporterConfig1.onSpecComplete({name: firefox}, { fullName: 's2 d2',
           skipped: true, suite: ['s2'], description: 'd2', time: '2'});
         reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2 d2',
@@ -213,9 +236,9 @@ describe('Sonarqube reporter tests', function() {
         reporterConfig1.onSpecComplete({name: ie}, { fullName: 's2 d2',
           skipped: true, suite: ['s2'], description: 'd2', time: '2'});
         reporterConfig1.onRunComplete({}, {});
-        // TODO: assert specSuccess arguments
-        // TODO: assert report file content
+
         expect(reporterConfig1.specSkipped.calls.count()).toEqual(3);
+
         expect(isReportFileCreated('reports/config1/firefox.xml')).toBe(true);
         expect(isReportFileCreated('reports/config1/chrome.xml')).toBe(true);
         expect(isReportFileCreated('reports/config1/ie.xml')).toBe(true);
@@ -223,6 +246,7 @@ describe('Sonarqube reporter tests', function() {
     });
     describe('Reporter using custom configuration 2', function() {
       it('All test cases failed', function() {
+
         reporterConfig2.onSpecComplete({name: firefox}, { fullName: 's3 d3',
           suite: ['s3'], description: 'd3', time: '3', log: ['e3']});
         reporterConfig2.onSpecComplete({name: chrome}, { fullName: 's3 d3',
@@ -231,21 +255,24 @@ describe('Sonarqube reporter tests', function() {
           suite: ['s3'], description: 'd3', time: '3',
           log: ['e3.1', 'e3.2']});
         reporterConfig2.onRunComplete({}, {});
-        // TODO: assert specSuccess arguments
-        // TODO: assert report file content
+
         expect(reporterConfig2.specFailure.calls.count()).toEqual(3);
+
         expect(isReportFileCreated('reports/config2/firefox/result.xml')).toBe(true);
         expect(isReportFileCreated('reports/config2/chrome/result.xml')).toBe(true);
         expect(isReportFileCreated('reports/config2/ie/result.xml')).toBe(true);
       });
     });
   });
+
   function isReportFileCreated(filePath) {
     return fs.existsSync(filePath);
   }
+
   function readReportFile(filePath) {
     return fs.readFileSync(filePath, 'utf-8');
   }
+
   function clearReports(folder) {
     rimraf.sync(folder);
   }
