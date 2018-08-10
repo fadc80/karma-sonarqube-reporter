@@ -24,6 +24,7 @@ module.exports = function (config) {
       outputFolder: 'reports',
       filePattern: '**/*spec.ts',
       encoding: 'utf-8',
+      legacyMode: false,
       reportName: (metadata) => {
         return metadata.concat('xml').join('.');
       }
