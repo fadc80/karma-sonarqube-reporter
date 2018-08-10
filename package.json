@@ -27,6 +27,7 @@
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
+    "chai-xml": "^0.3.2",
     "coveralls": "^3.0.0",
     "jasmine": "^3.1.0",
     "jasmine-spec-reporter": "^4.2.1",
