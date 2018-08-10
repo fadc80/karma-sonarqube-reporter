@@ -30,7 +30,7 @@ sonarqubeReporter: {
   filePattern: '**/*spec.ts', // test files glob pattern
   outputFolder: 'reports',    // report destination
   encoding: 'utf-8',          // report encoding
-  legacyMode: false,          // report XML schema for Sonarqube < 6.2
+  legacyMode: false,          // report for Sonarqube < 6.2 (disabled)
   reportName: (metadata) => { // report name callback
     /**
      * Report metadata array content:
@@ -66,10 +66,10 @@ The current report files' schema is defined on the [SonarQube Generic Test Data]
 
 Add one of the following properties to your `sonar-project.properties`:
 
-| Legacy Mode | Sonarqube | Property                                  |
-| ----------- | ----------| ----------------------------------------- |
-| false       | >= 6.2    | sonar.testExecutionReportPath             |
-| true        | <= 6.1    | sonar.genericcoverage.unitTestReportPaths |
+| Legacy Mode | Property                                  |
+| ----------- | ----------------------------------------- |
+| false       | sonar.testExecutionReportPaths            |
+| true        | sonar.genericcoverage.unitTestReportPaths |
 
 Note report paths should be passed in a comma-delimited.
 
