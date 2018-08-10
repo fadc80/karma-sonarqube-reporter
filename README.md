@@ -28,8 +28,8 @@ plugins: [
 sonarqubeReporter: {
   basePath: 'src/app',        // test files folder
   filePattern: '**/*spec.ts', // test files glob pattern
+  encoding: 'utf-8',          // test files encoding
   outputFolder: 'reports',    // report destination
-  encoding: 'utf-8',          // report encoding
   legacyMode: false,          // report for Sonarqube < 6.2 (disabled)
   reportName: (metadata) => { // report name callback
     /**
