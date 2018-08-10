@@ -133,7 +133,7 @@ function createFile(filePath, data, rootElementName) {
 }
 
 function metadata(report) {
-  return report.replace(/\(|\)/gm,'').split(" ");
+  return report.toLowerCase().replace(/\(|\)/gm,'').split(" ");
 }
 
 function toXml(report, rootElementName) {

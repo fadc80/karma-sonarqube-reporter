@@ -30,9 +30,9 @@ describe('Sonarqube reporter tests', function() {
   var reporterDefault;
   var reporterConfig1;
   var reporterConfig2;
-  const firefox = 'firefox 1.0.0 (linux 1.0.0)';
-  const chrome = 'chrome 1.0.0 (linux 1.0.0)';
-  const ie = 'ie 1.0.0 (linux 1.0.0)'
+  const firefox = 'Firefox 1.0.0 (Linux 1.0.0)';
+  const chrome = 'Chrome 1.0.0 (Linux 1.0.0)';
+  const ie = 'IE 1.0.0 (Linux 1.0.0)'
   beforeAll(function() {
     mock('../lib/path-finder', {
       parseTestFiles: function(pattern, encoding) {
