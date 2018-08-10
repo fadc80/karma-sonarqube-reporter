@@ -21,7 +21,7 @@ plugins: [
 ]
 ```
 
-**Add configuration parameters (optional)**
+**Add configuration parameters**
 
 ```javascript
 // Default configuration
