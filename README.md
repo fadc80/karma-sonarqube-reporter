@@ -58,13 +58,13 @@ If your project uses [Angular CLI][4] run `ng test` and check the output folder.
 
 ```command
 $ ls reports
-firefox.54.0.0.linux.0.0.0.xml
 chrome.65.0.3325.linux.0.0.0.xml
+firefox.54.0.0.linux.0.0.0.xml
 ```
 
 The current report files' schema is defined on the [SonarQube Generic Test Data][5] page.
 
-Add one of the following properties to your `sonar-project.properties`:
+Add to your `sonar-project.properties` one of the following properties:
 
 | Legacy Mode | Property                                  |
 | ----------- | ----------------------------------------- |
