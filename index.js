@@ -79,8 +79,7 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   };
 
   this.onRunComplete = function(browsersCollection, results) {
-    saveReports(outputFolder, reports, legacyMode ?
-      'unitTest' : 'testExecutions');
+    saveReports(outputFolder, reports, legacyMode);
   };
 };
 
@@ -110,16 +109,16 @@ function stacktrace(result, formatError) {
     (errors, value)=> { return errors.concat(value) });
 }
 
-function saveReports(folder, reports, rootElementName) {
+function saveReports(folder, reports, legacyMode) {
   Object.keys(reports).forEach((report) => {
     saveReport(path.join(folder, report),
-      reports[report], rootElementName);
+      reports[report], legacyMode);
   });
 }
 
-function saveReport(filePath, data, rootElementName) {
+function saveReport(filePath, data, legacyMode) {
   createFolder(filePath);
-  createFile(filePath, data, rootElementName);
+  createFile(filePath, data, legacyMode);
 }
 
 function createFolder(filePath) {
@@ -128,8 +127,9 @@ function createFolder(filePath) {
   );
 }
 
-function createFile(filePath, data, rootElementName) {
-  fs.writeFileSync(filePath, toXml(data, rootElementName));
+function createFile(filePath, data, legacyMode) {
+  fs.writeFileSync(filePath, toXml(data, legacyMode ?
+    'unitTest' : 'testExecutions'));
 }
 
 function metadata(report) {
