@@ -11,8 +11,8 @@ const testFileData = {
   'path/t6.spec.js':'describe(\'s6\', function() { it(\'d6.1\', function() {}); });' +
     'describe(\'s6.2\', function() { it(\'d6.2\', function() {}); });' +
     'describe(\'s6.3\', function() { it(\'d6.3\', function() {}); });' +
-    'describe(\'s6.4\', function() { describe(\'s6.4.1\', function() { ' +
-      'it(\'d6.4.1\', function() {}); }); });'
+    'describe(\'s6.4\', function() { describe(\'s6.4.1\'+\'text\', function() { ' +
+      'it(\'d6.4.1\'+\'text\', function() {}); }); });'
 }
 
 const parsedTestFiles = {
@@ -159,9 +159,17 @@ describe('Path finder tests', function() {
         .toBe('path/t4.spec.js');
     });
 
-    it('Suite 5 and description 5 found in test file 4', function() {
+    it('Suite 5 and description 5 found in test file 5', function() {
       expect(pathFinder.testFile(parsedTestFiles, '\\\"s5\\\"', '\\\"d5\\\"'))
         .toBe('path/t5.spec.js');
+    });
+
+
+    it('Suite 6 and description 6 found in test file 6', function() {
+      expect(pathFinder.testFile(parsedTestFiles, 's6',  'd6.1')).toBe('path/t6.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's62', 'd6.2')).toBe('path/t6.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's63', 'd6.3')).toBe('path/t6.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's6.4.1text', 'd6.4.1text')).toBe('path/t6.spec.js');
     });
   });
 });
