@@ -104,11 +104,11 @@ describe('Sonarqube reporter tests', function() {
     describe('Reporter using default configuration', function() {
       it('All test cases passed (firefox)', function() {
 
-        reporterDefault.onSpecComplete({name: firefox}, { fullName: 's1 d1',
+        reporterDefault.onSpecComplete({name: firefox}, {
           success: true, suite: ['s1'], description: 'd1', time: '1'});
-        reporterDefault.onSpecComplete({name: firefox}, { fullName: 's2 d2',
+        reporterDefault.onSpecComplete({name: firefox}, { fullName: 's2#d2',
           success: true, suite: ['s2'], description: 'd2', time: '2'});
-        reporterDefault.onSpecComplete({name: firefox}, { fullName: 's3 d3',
+        reporterDefault.onSpecComplete({name: firefox}, { fullName: 's3#d3',
           success: true, suite: ['s3'], description: 'd3', time: '3'});
         reporterDefault.onRunComplete({}, {});
 
@@ -121,11 +121,11 @@ describe('Sonarqube reporter tests', function() {
           `<?xml version='1.0'?>
            <testExecutions version='1'>
              <file path='test/file1/path'>
-               <testCase name='s1 d1' duration='1'/>
-               <testCase name='s2 d2' duration='2'/>
+               <testCase name='s1#d1' duration='1'/>
+               <testCase name='s2#d2' duration='2'/>
              </file>
              <file path='test/file3/path'>
-               <testCase name='s3 d3' duration='3'/>
+               <testCase name='s3#d3' duration='3'/>
              </file>
            </testExecutions>`
         );
@@ -135,11 +135,11 @@ describe('Sonarqube reporter tests', function() {
     describe('Reporter using custom configuration 1', function() {
       it('All test cases skipped (chrome)', function() {
 
-        reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's1 d1',
+        reporterConfig1.onSpecComplete({name: chrome}, {
           skipped: true, suite: ['s1'], description: 'd1', time: '1'});
-        reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2 d2',
+        reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2#d2',
           skipped: true, suite: ['s2'], description: 'd2', time: '2'});
-        reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's3 d3',
+        reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's3#d3',
           skipped: true, suite: ['s3'], description: 'd3', time: '3'});
         reporterConfig1.onRunComplete({}, {});
 
@@ -152,15 +152,15 @@ describe('Sonarqube reporter tests', function() {
           `<?xml version='1.0'?>
            <testExecutions version='1'>
              <file path='test/file1/path'>
-               <testCase name='s1 d1' duration='1'>
+               <testCase name='s1#d1' duration='1'>
                  <skipped message='TestCase skipped'/>
                </testCase>
-               <testCase name='s2 d2' duration='2'>
+               <testCase name='s2#d2' duration='2'>
                  <skipped message='TestCase skipped'/>
                </testCase>
              </file>
              <file path='test/file3/path'>
-               <testCase name='s3 d3' duration='3'>
+               <testCase name='s3#d3' duration='3'>
                <skipped message='TestCase skipped'/>
                </testCase>
              </file>
@@ -172,11 +172,11 @@ describe('Sonarqube reporter tests', function() {
     describe('Reporter using custom configuration 2', function() {
       it('All test cases failed (ie)', function() {
 
-        reporterConfig2.onSpecComplete({name: ie}, { fullName: 's1 d1',
+        reporterConfig2.onSpecComplete({name: ie}, {
           suite: ['s1'], description: 'd1', time: '1', log: ['e1']});
-        reporterConfig2.onSpecComplete({name: ie}, { fullName: 's2 d2',
+        reporterConfig2.onSpecComplete({name: ie}, { fullName: 's2#d2',
           suite: ['s2'], description: 'd2', time: '2', log: ['e2']});
-        reporterConfig2.onSpecComplete({name: ie}, { fullName: 's3 d3',
+        reporterConfig2.onSpecComplete({name: ie}, { fullName: 's3#d3',
           suite: ['s3'], description: 'd3', time: '3', log: ['e3']});
         reporterConfig2.onRunComplete({}, {});
 
@@ -189,15 +189,15 @@ describe('Sonarqube reporter tests', function() {
           `<?xml version='1.0'?>
            <unitTest version='1'>
              <file path='test/file1/path'>
-               <testCase name='s1 d1' duration='1'>
+               <testCase name='s1#d1' duration='1'>
                  <failure message='TestCase failed'>e1</failure>
                </testCase>
-               <testCase name='s2 d2' duration='2'>
+               <testCase name='s2#d2' duration='2'>
                  <failure message='TestCase failed'>e2</failure>
                </testCase>
              </file>
              <file path='test/file3/path'>
-               <testCase name='s3 d3' duration='3'>
+               <testCase name='s3#d3' duration='3'>
                  <failure message='TestCase failed'>e3</failure>
                </testCase>
              </file>
@@ -211,11 +211,11 @@ describe('Sonarqube reporter tests', function() {
     describe('Reporter using default configuration', function() {
       it('All test cases passed', function() {
 
-        reporterDefault.onSpecComplete({name: firefox}, { fullName: 's1 d1',
+        reporterDefault.onSpecComplete({name: firefox}, {
           success: true, suite: ['s1'], description: 'd1', time: '1'});
-        reporterDefault.onSpecComplete({name: chrome}, { fullName: 's1 d1',
+        reporterDefault.onSpecComplete({name: chrome}, { fullName: 's1#d1',
           success: true, suite: ['s1'], description: 'd1', time: '1'});
-        reporterDefault.onSpecComplete({name: ie}, { fullName: 's1 d1',
+        reporterDefault.onSpecComplete({name: ie}, { fullName: 's1#d1',
           success: true, suite: ['s1'], description: 'd1', time: '1'});
         reporterDefault.onRunComplete({}, {});
 
@@ -229,11 +229,11 @@ describe('Sonarqube reporter tests', function() {
     describe('Reporter using custom configuration 1', function() {
       it('All test cases skipped', function() {
 
-        reporterConfig1.onSpecComplete({name: firefox}, { fullName: 's2 d2',
+        reporterConfig1.onSpecComplete({name: firefox}, {
           skipped: true, suite: ['s2'], description: 'd2', time: '2'});
-        reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2 d2',
+        reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2#d2',
           skipped: true, suite: ['s2'], description: 'd2', time: '2'});
-        reporterConfig1.onSpecComplete({name: ie}, { fullName: 's2 d2',
+        reporterConfig1.onSpecComplete({name: ie}, { fullName: 's2#d2',
           skipped: true, suite: ['s2'], description: 'd2', time: '2'});
         reporterConfig1.onRunComplete({}, {});
 
@@ -247,11 +247,11 @@ describe('Sonarqube reporter tests', function() {
     describe('Reporter using custom configuration 2', function() {
       it('All test cases failed', function() {
 
-        reporterConfig2.onSpecComplete({name: firefox}, { fullName: 's3 d3',
+        reporterConfig2.onSpecComplete({name: firefox}, {
           suite: ['s3'], description: 'd3', time: '3', log: ['e3']});
-        reporterConfig2.onSpecComplete({name: chrome}, { fullName: 's3 d3',
+        reporterConfig2.onSpecComplete({name: chrome}, { fullName: 's3#d3',
           suite: ['s3'], description: 'd3', time: '3', log: ['e3']});
-        reporterConfig2.onSpecComplete({name: ie}, { fullName: 's3 d3',
+        reporterConfig2.onSpecComplete({name: ie}, { fullName: 's3#d3',
           suite: ['s3'], description: 'd3', time: '3',
           log: ['e3.1', 'e3.2']});
         reporterConfig2.onRunComplete({}, {});
