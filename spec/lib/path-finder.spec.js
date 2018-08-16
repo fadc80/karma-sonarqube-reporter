@@ -30,15 +30,21 @@ describe('Path finder tests', function() {
 
   beforeAll(function() {
 
+    mock('fs', {
+      readFileSync: function(path, encoding) {
+        return testFileData[path];
+      }
+    });
+
     mock('glob', {
       sync: function(pattern) {
         return Object.keys(testFileData);
       }
     });
 
-    mock('fs', {
-      readFileSync: function(path, encoding) {
-        return testFileData[path];
+    mock('../../lib/custom-logger', {
+      init: function (level) {
+        return { error: (message) => {} };
       }
     });
 
@@ -46,6 +52,7 @@ describe('Path finder tests', function() {
   });
 
   afterAll(function() {
+    mock.stop('../../lib/custom-logger');
     mock.stop('glob');
     mock.stop('fs');
   });
@@ -129,9 +136,8 @@ describe('Path finder tests', function() {
 
   describe('Find test file path tests', function() {
     it('Test file path not found', function() {
-      expect(function() {
-        pathFinder.testFile(parsedTestFiles, 's7', 'd7')})
-          .toThrow(new Error('Test file path not found!'));
+        expect(pathFinder.testFile(parsedTestFiles, 's7', 'd7'))
+          .toBeUndefined();
     });
 
     it('Suite 1 and description 1 found in test file 1', function() {

@@ -55,8 +55,10 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
       reportName(metadata(browser.name)));
     var path = pathfinder.testFile(paths,
       result.suite[0], result.description);
-    reportFile(report, path).testCase.push(
-      reportbuilder.createReportTestCaseSuccess(result));
+    if (path !== undefined) {
+      reportFile(report, path).testCase.push(
+        reportbuilder.createReportTestCaseSuccess(result));
+    }
   }
 
   this.specSkipped = function(browser, result) {
@@ -64,8 +66,10 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
       reportName(metadata(browser.name)));
     var path = pathfinder.testFile(paths,
       result.suite[0], result.description);
-    reportFile(report, path).testCase.push(
-      reportbuilder.createReportTestCaseSkipped(result));
+    if (path !== undefined) {
+      reportFile(report, path).testCase.push(
+        reportbuilder.createReportTestCaseSkipped(result));
+    }
   };
 
   this.specFailure = function(browser, result) {
@@ -73,10 +77,12 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
       reportName(metadata(browser.name)));
     var path = pathfinder.testFile(paths,
       result.suite[0], result.description);
-    reportFile(report, path).testCase.push(
+    if (path !== undefined) {
+      reportFile(report, path).testCase.push(
       reportbuilder.createReportTestCaseFailure(result,
         stacktrace(result, formatError)));
-  };
+      }
+    };
 
   this.onRunComplete = function(browsersCollection, results) {
     saveReports(outputFolder, reports, legacyMode);

@@ -24,7 +24,8 @@
     "clone-regexp": "^1.0.1",
     "glob": "^7.1.2",
     "js2xmlparser": "^3.0.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "winston": "^3.0.0"
   },
   "devDependencies": {
     "chai-xml": "^0.3.2",
