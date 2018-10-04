@@ -29,12 +29,12 @@
   },
   "devDependencies": {
     "chai-xml": "^0.3.2",
-    "coveralls": "^3.0.0",
+    "coveralls": "^3.0.2",
     "jasmine": "^3.1.0",
     "jasmine-spec-reporter": "^4.2.1",
     "lodash": "^4.17.10",
     "mock-require": "^3.0.2",
-    "nyc": "^11.6.0",
+    "nyc": "^13.1.0",
     "rimraf": "^2.6.2"
   }
 }
