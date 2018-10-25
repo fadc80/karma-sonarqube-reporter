@@ -5,6 +5,10 @@
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=karma-sonarqube-reporter&metric=alert_status)](https://sonarcloud.io/dashboard/index/karma-sonarqube-reporter)
 > [Karma][1] reporter plugin for generating [SonarQube][2] generic test reports.
 
+## Requirements
+
+* Node.js >= 8.1.10
+
 ## Installation
 
 `npm install karma-sonarqube-reporter --save-dev`
