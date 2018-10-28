@@ -7,7 +7,7 @@
 
 ## Requirements
 
-Node.js >= 8.1.10
+Node.js >= 8.10.0
 
 ## Installation
 
