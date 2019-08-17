@@ -10,7 +10,16 @@ addons:
 jdk:
   - open-jdk-8
 
+before_script:
+  - npm install -g @angular/cli
+
 script:
+  - echo "Unit Tests"
+  - npm run test
+  - sonar-scanner
+  - echo "Integration Tests"
+  - cd it
+  - npm install
   - npm run test
   - sonar-scanner
 
