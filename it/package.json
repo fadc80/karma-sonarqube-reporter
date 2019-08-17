@@ -1,5 +1,5 @@
 {
-  "name": "tour-of-heroes",
+  "name": "karma-sonarqube-reporter-it",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
