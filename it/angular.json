@@ -85,6 +85,10 @@
             "styles": [
               "src/test.css"
             ],
+            "codeCoverageExclude": [
+              "src/**/*spec.ts",
+              "src/**/testing/*.ts"
+            ],
             "scripts": []
           }
         },
