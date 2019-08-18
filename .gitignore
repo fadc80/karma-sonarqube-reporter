@@ -2,14 +2,14 @@
 npm-debug.log*
 
 # Dependency directories
-node_modules/
+**/node_modules/
 
 # Code coverage
 .nyc_output
-coverage
+**/coverage
 
 # Temp folder
-reports
+**/reports
 
 # VSCODE
 .vscode/
