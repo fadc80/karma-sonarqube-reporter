@@ -32,7 +32,7 @@ Tests are stored in the `specs` folder.
 npm test
 ```
 
-### Add and push changes
+### Add and push your changes
 
 For example:
 
