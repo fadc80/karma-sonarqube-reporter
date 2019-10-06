@@ -79,6 +79,8 @@ Note report paths should be passed in a comma-delimited.
 
 Finally, start [SonarQube Scanner][6] on your project folder.
 
+[Contributions](contributing.md) are welcome!
+
 That's all!
 
 [1]: https://karma-runner.github.io/2.0/index.html
