@@ -1,19 +1,49 @@
 # Contributing
 
-We love pull requests from everyone. Bellow are the described the steps you are expected to follow:  
+Follow these steps to send contributions:
 
-Fork, then clone the repo:
+### Fork this repository
 
-    git clone git@github.com:your-username/karma-sonarqube-reporter.git
+[Fork a repo][1]
 
-Make sure the tests pass:
+### Clone your forked copy
 
-    npm test
+```
+git clone git@github.com:your-username/karma-sonarqube-reporter.git
+```
 
-Make your change. Add tests for your change. Make the tests pass:
+### Install project dependencies
 
-    npm test
+```
+npm install
+```
 
-Push to your fork and [submit a pull request][pr].
+### Make your changes
 
-[pr]: https://github.com/fadc80/karma-sornarqube-reporter/compare/
+Some improvement or issue fix
+
+### Write unit tests
+
+Tests are stored in the `specs` folder.
+
+### Check tests pass
+
+```
+npm test
+```
+
+### Add and push changes
+
+For example:
+
+```
+git add .  
+git commit -m "Fixes #1"
+```
+
+### Submit a pull request
+
+[Creating a pull request][2]
+
+[1]:https://help.github.com/en/articles/fork-a-repo
+[2]:https://help.github.com/en/articles/creating-a-pull-request
