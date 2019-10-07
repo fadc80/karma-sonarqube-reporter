@@ -4,7 +4,7 @@ Follow these steps to send contributions:
 
 ## Fork this repository
 
-[Fork a repo][1]
+[How to fork a repo][1]
 
 ## Clone your forked copy
 
@@ -43,7 +43,7 @@ git commit -m "Fixes #1"
 
 ## Submit a pull request
 
-[Creating a pull request][2]
+[How to create a pull request][2]
 
 [1]:https://help.github.com/en/articles/fork-a-repo
 [2]:https://help.github.com/en/articles/creating-a-pull-request
