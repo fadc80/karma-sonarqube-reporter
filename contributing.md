@@ -42,7 +42,7 @@ git commit -m "Fixes #1"
 git push
 ```
 
-## Submit a pull request
+## Create a pull request
 
 [How to create a pull request][2]
 
