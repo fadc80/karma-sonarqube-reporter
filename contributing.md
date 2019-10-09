@@ -32,13 +32,14 @@ Tests are stored in the `specs` folder.
 npm test
 ```
 
-## Add and push your changes
+## Submit your changes
 
 For example:
 
 ```
 git add .  
 git commit -m "Fixes #1"
+git push
 ```
 
 ## Submit a pull request
