@@ -24,7 +24,7 @@ Some improvement or issue fix
 
 ## Write unit tests
 
-Tests are stored in the `specs` folder.
+Tests are stored in the `specs` folder
 
 ## Check tests pass
 
