@@ -13,7 +13,13 @@ const testFileData = {
     'describe(\'s7.2\', function() { it(\'d7.2\', function() {}); });' +
     'describe(\'s7.3\', function() { it(\'d7.3\', function() {}); });' +
     'describe(\'s7.4\', function() { describe(\'s7.4.1\'+\'text\', function() { ' +
-      'it(\'d7.4.1\'+\'text\', function() {}); }); });'
+      'it(\'d7.4.1\'+\'text\', function() {}); }); });',
+  'path/t8.spec.js': 'describe.skip(\'s8\', function() { it.skip(\'d8\', function() {}); });',
+  'path/t9.spec.js':'describe(\'s9\', function() { xit(\'d9.1\', function() {}); });' +
+    'describe(\'s9.2\', function() { it.skip(\'d9.2\', function() {}); });' +
+    'describe(\'s9.3\', function() { xit(\'d9.3\', function() {}); });' +
+    'describe(\'s9.4\', function() { describe.skip(\'s9.4.1\'+\'text\', function() { ' +
+    'fit(\'d9.4.1\'+\'text\', function() {}); }); });',
 }
 
 const parsedTestFiles = {
@@ -24,7 +30,11 @@ const parsedTestFiles = {
   'path/t5.spec.js': { describe: ['\\\"s5\\\"'], it: ['\\\"d5\\\"']},
   'path/t6.spec.js': { describe: ['s6\"\\\\\'\\\\\'\"'], it: ['d6\"\\\\\'\\\\\'\"']},
   'path/t7.spec.js': { describe: ['s7', 's7.2', 's7.3', 's7.4', 's7.4.1'],
-     it: ['d7.1', 'd7.2', 'd7.3', 'd7.4.1']}
+     it: ['d7.1', 'd7.2', 'd7.3', 'd7.4.1']},
+  'path/t8.spec.js': { describe: ['s8'], it: ['d8'] },
+  'path/t9.spec.js': { describe: ['s9', 's9.2', 's9.3', 's9.4', 's9.4.1'],
+      it: ['d9.1', 'd9.2', 'd9.3', 'd9.4.1'],
+  }
 }
 
 describe('Path finder tests', function() {
@@ -88,11 +98,17 @@ describe('Path finder tests', function() {
         expect(path.it[1]).toBe('d3.2');
       });
 
+      it("8st test file match suite 8 and description 8 with skipped suite and test", function() {
+        var paths = pathFinder.parseTestFiles("**/*.spec.ts", "utf-8");
+        var path = paths["path/t8.spec.js"];
+        expect(path.describe[0]).toBe("s8");
+        expect(path.it[0]).toBe("d8");
+      });
+
       describe('Test cases with quoted text', function() {
         it('4rd test file match suite and description with single quotes', function() {
           var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
           var path = paths['path/t4.spec.js'];
-          console.log()
           expect(path.describe[0]).toBe('\\\'s4\\\'');
           expect(path.it[0]).toBe('\\\'d4\\\'');
         });
@@ -140,6 +156,14 @@ describe('Path finder tests', function() {
         var path = paths['path/t7.spec.js'];
         expect(path.describe[4]).toBe('s7.4.1');
         expect(path.it[3]).toBe('d7.4.1');
+      });
+
+      it("9st test file match suite 9 and description 9 with skipped test", function() {
+        var paths = pathFinder.parseTestFiles("**/*.spec.ts", "utf-8");
+        var path = paths["path/t9.spec.js"];
+        expect(path.describe[0]).toBe("s9");
+        expect(path.it[0]).toBe("d9.1");
+        expect(path.it[1]).toBe("d9.2");
       });
     });
   });
