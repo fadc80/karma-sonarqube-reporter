@@ -41,11 +41,11 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
   this.adapters = [];
 
   this.onSpecComplete = function(browser, result) {
-    if (result.success) {
-      this.specSuccess(browser, result);
-    }
-    else if (result.skipped) {
+    if (result.skipped) {
       this.specSkipped(browser, result);
+    }
+    else if (result.success) {
+      this.specSuccess(browser, result);
     }
     else {
       this.specFailure(browser, result);
