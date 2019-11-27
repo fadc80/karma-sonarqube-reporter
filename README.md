@@ -35,7 +35,7 @@ sonarqubeReporter: {
   encoding: 'utf-8',          // test files encoding
   outputFolder: 'reports',    // report destination
   legacyMode: false,          // report for Sonarqube < 6.2 (disabled)
-  reportName: (metadata) => { // report name callback
+  reportName: (metadata) => { // report name callback, accepts also a string (reportName: 'report.xml') to generate a single file
     /**
      * Report metadata array:
      * - metadata[0] = browser name

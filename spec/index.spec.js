@@ -22,10 +22,7 @@ const config2 = {
     outputFolder: 'reports/config2',
     encoding: 'iso-8859-1',
     legacyMode: true,
-    reportName: (metadata) => {
-      return metadata[0].concat(
-        '/result.xml');
-    }
+    reportName: 'result.xml'
   }
 };
 
@@ -180,7 +177,7 @@ describe('Sonarqube reporter tests', function() {
           suite: ['s3'], description: 'd3', time: '3', log: ['e3']});
         reporterConfig2.onRunComplete({}, {});
 
-        const reportFilePath = 'reports/config2/ie/result.xml';
+        const reportFilePath = 'reports/config2/result.xml';
 
         expect(reporterConfig2.specFailure.calls.count()).toEqual(3);
         expect(isReportFileCreated(reportFilePath)).toBe(true);
@@ -258,9 +255,7 @@ describe('Sonarqube reporter tests', function() {
 
         expect(reporterConfig2.specFailure.calls.count()).toEqual(3);
 
-        expect(isReportFileCreated('reports/config2/firefox/result.xml')).toBe(true);
-        expect(isReportFileCreated('reports/config2/chrome/result.xml')).toBe(true);
-        expect(isReportFileCreated('reports/config2/ie/result.xml')).toBe(true);
+        expect(isReportFileCreated('reports/config2/result.xml')).toBe(true);
       });
     });
   });
