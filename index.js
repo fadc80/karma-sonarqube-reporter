@@ -26,7 +26,9 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
 
   var outputFolder = sonarqubeConfig.outputFolder || OUTPUT_FOLDER;
   var encoding = sonarqubeConfig.encoding || ENCODING;
-  var reportName = sonarqubeConfig.reportName || REPORT_NAME;
+  var reportName = (typeof sonarqubeConfig.reportName === 'string')
+    ? () => sonarqubeConfig.reportName
+    : sonarqubeConfig.reportName || REPORT_NAME;
   var legacyMode = sonarqubeConfig.legacyMode || LEGACY_MODE;
 
   var paths = pathfinder.parseTestFiles(
