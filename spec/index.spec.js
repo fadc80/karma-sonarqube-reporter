@@ -133,11 +133,11 @@ describe('Sonarqube reporter tests', function() {
       it('All test cases skipped (chrome)', function() {
 
         reporterConfig1.onSpecComplete({name: chrome}, {
-          skipped: true, suite: ['s1'], description: 'd1', time: '1'});
+          success:true, skipped: true, suite: ['s1'], description: 'd1', time: '1'});
         reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2#d2',
-          skipped: true, suite: ['s2'], description: 'd2', time: '2'});
+          success:true, skipped: true, suite: ['s2'], description: 'd2', time: '2'});
         reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's3#d3',
-          skipped: true, suite: ['s3'], description: 'd3', time: '3'});
+          success:true, skipped: true, suite: ['s3'], description: 'd3', time: '3'});
         reporterConfig1.onRunComplete({}, {});
 
         const reportFilePath = 'reports/config1/chrome.xml';
@@ -227,11 +227,11 @@ describe('Sonarqube reporter tests', function() {
       it('All test cases skipped', function() {
 
         reporterConfig1.onSpecComplete({name: firefox}, {
-          skipped: true, suite: ['s2'], description: 'd2', time: '2'});
+          success:true, skipped: true, suite: ['s2'], description: 'd2', time: '2'});
         reporterConfig1.onSpecComplete({name: chrome}, { fullName: 's2#d2',
-          skipped: true, suite: ['s2'], description: 'd2', time: '2'});
+          success:true, skipped: true, suite: ['s2'], description: 'd2', time: '2'});
         reporterConfig1.onSpecComplete({name: ie}, { fullName: 's2#d2',
-          skipped: true, suite: ['s2'], description: 'd2', time: '2'});
+          success:true, skipped: true, suite: ['s2'], description: 'd2', time: '2'});
         reporterConfig1.onRunComplete({}, {});
 
         expect(reporterConfig1.specSkipped.calls.count()).toEqual(3);
