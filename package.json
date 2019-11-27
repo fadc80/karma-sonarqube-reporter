@@ -28,13 +28,13 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
-    "chai-xml": "^0.3.2",
-    "coveralls": "^3.0.2",
-    "jasmine": "^3.1.0",
-    "jasmine-spec-reporter": "^4.2.1",
-    "lodash": "^4.17.15",
-    "mock-require": "^3.0.2",
-    "nyc": "^14.1.1",
-    "rimraf": "^2.6.2"
+    "chai-xml": "0.3.2",
+    "coveralls": "3.0.2",
+    "jasmine": "3.1.0",
+    "jasmine-spec-reporter": "4.2.1",
+    "lodash": "4.17.15",
+    "mock-require": "3.0.2",
+    "nyc": "14.1.1",
+    "rimraf": "2.6.2"
   }
 }
