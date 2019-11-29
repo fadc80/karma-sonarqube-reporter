@@ -22,10 +22,14 @@ script: echo "UT against $(node -v)"
 
 jobs:
   include:
-    - stage: integration
+    - stage: jasmine
       node_js: 10
-      - script: ./test.sh jasmine
-      - script: ./test.sh mocha
+      script: 
+        - ./test.sh jasmine
+    - stage: mocha
+      node_js: 10      
+      script: 
+        - ./test.sh mocha      
     - stage: metrics
       node_js: 10
       script:
