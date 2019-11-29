@@ -1,3 +1,5 @@
+# Run it tests wiht jasmine and mocha
+
 declare -A descriptions
 declare -A folders
 
