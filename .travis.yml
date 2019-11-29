@@ -1,35 +1,53 @@
 dist: trusty
-sudo: required
 
 addons:
   sonarcloud:
     organization: "fadc80-github"
     token:
       secure: "h50IeJTbVkwbhVS2NsSoKD04D+0mS853j7XWMgGHQt+UBkFEjuN7QH04oDSKK2/laG5+MATW9NEf60AStOxE1gszLn/ljynGcMHdAKmyud7x2rt8bWFNQeorYDUcRrcQ4gNR0MRI8go6WZ9JjdBxpz5apaNtDAOru7+/7C4NoVOzxfIdqSBVVpnQyaEjnV2y2ZLJUSeYnS9Po4s45rAp994ARFLNwDIKMub9hOoLZNzmIM8PkfBS/7xrVDwZXoPRmAsryebmhoJtD75uky5bv4d+HyIymzdx8xb8pZIbrEmx6Bq+ggcoMAOpdmz0FUUI1umy4kGlapXf6FhRgFjca4C09eVtdF457JNOaRBI1Edhrj+VPHNYqvpt6Vu3sDdXbS5taadYifxX7z2EvSYXvJsm3Iz7OlmaYhsDTSm0V2WHNHA2hjjjnCgTL+g0i47ResjvLwne5+bs+WeFaC58f5b94/2ARCtFG/4wZItVXu+GX4WYC69LMVBm0f1MoOOlNRn7bZET6TlnTudB+Cx02tDhqizFjM6H2EhWwsjGQptYz1QH/PQTrpQZz3dFA28HJGrsrqp/7CEDwlpluFts95Cga/opb+4iejL/32Y30OQmWmKeJE6JRHgKrZe+JscGhZ+h8cx5PTysGEqi5teuiHlOKkb0dqD4yKiHw4dVGyY="
+cache:
+  directories:
+    - '$HOME/node_modules'
+    - '$HOME/.sonar/cache'
+    - '$HOME/it/angular-jasmine/.sonar/cache'
+    - '$HOME/it/angular-mocha/.sonar/cache'
 
 jdk:
   - open-jdk-8
-
-before_script:
-  - npm install -g @angular/cli
-
-script:
-  - git fetch --unshallow
-  - echo "Unit Tests"
-  - npm run test
-  - sonar-scanner
-  - echo "Integration Tests"
-  - cd it
-  - npm install
-  - npm run test
-  - sonar-scanner
-
-cache:
-  directories:
-    - '$HOME/.sonar/cache'
 
 language: node_js
 node_js:
   - '8'
   - '9'
   - '10'
+
+before_script:
+  - git fetch --unshallow
+  - npm install -g @angular/cli
+  - npm install
+  - npm run test
+
+script:
+  - echo "UT against $(node -v)"
+
+jobs:
+  include:
+    - stage: integration
+      node_js: 10
+      script:
+        - echo "Project Angular/Jasmine"
+        - cd it/angular-jasmine
+        - npm install
+        - npm run test
+        - sonar-scanner
+      script:
+        - echo "Project Angular/Mocha"
+        - cd it/angular-mocha
+        - npm install
+        - npm run test
+        - sonar-scanner
+    - stage: metrics
+      node_js: 10
+      script:
+        - echo "Code metrics"
+        - sonar-scanner
