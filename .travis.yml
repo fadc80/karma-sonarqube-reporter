@@ -34,13 +34,13 @@ jobs:
   include:
     - stage: integration
       node_js: 10
-      script:
+      script: ./integration 1
         - echo "Project Angular/Jasmine"
         - cd it/angular-jasmine
         - npm install
         - npm run test
         - sonar-scanner
-      script:
+      script: ./integration 2
         - echo "Project Angular/Mocha"
         - cd it/angular-mocha
         - npm install
