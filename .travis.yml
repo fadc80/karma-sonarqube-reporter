@@ -18,7 +18,11 @@ before_script:
   - git fetch --unshallow
   - npm install -g @angular/cli
 
-script: echo "UT against $(node -v)"
+script: 
+  - echo "UT against $(node -v)"
+  - npm install
+  - npm run test
+  - sonar-scanner
 
 jobs:
   include:
@@ -29,15 +33,8 @@ jobs:
     - stage: mocha
       node_js: 10      
       script: 
-        - ./test.sh mocha      
-    - stage: metrics
-      node_js: 10
-      script:
-        - echo "Code metrics"
-        - sonar-scanner
+        - ./test.sh mocha
 
 cache:
   directories:
     - '$HOME/.sonar/cache'
-    - '$HOME/node_modules'
-    - '$HOME/coverage'
