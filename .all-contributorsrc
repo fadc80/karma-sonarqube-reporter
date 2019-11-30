@@ -35,6 +35,7 @@
   ],
   "contributorsPerLine": 7,
   "projectName": "karma-sonarqube-reporter",
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=round-square)](#contributors)",
   "projectOwner": "fadc80",
   "repoType": "github",
   "repoHost": "https://github.com"
