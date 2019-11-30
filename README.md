@@ -1,9 +1,9 @@
 # karma-sonarqube-reporter
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![npm version](https://img.shields.io/npm/v/karma-sonarqube-reporter.svg?style=round-square)](https://www.npmjs.com/package/karma-sonarqube-reporter)
 [![Build Status](https://travis-ci.org/fadc80/karma-sonarqube-reporter.svg?branch=master)](https://travis-ci.org/fadc80/karma-sonarqube-reporter)
 [![Coverage Status](https://coveralls.io/repos/github/fadc80/karma-sonarqube-reporter/badge.svg?branch=master)](https://coveralls.io/github/fadc80/karma-sonarqube-reporter?branch=master)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=karma-sonarqube-reporter&metric=alert_status)](https://sonarcloud.io/dashboard/index/karma-sonarqube-reporter)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=round-square)](#contributors)
 > [Karma][1] reporter plugin for generating [SonarQube][2] generic test reports.
 
 ## Requirements
@@ -99,6 +99,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore -->
 <table>
   <tr>
+    <td align="center"><a href="https://github.com/sohansoni"><img src="https://avatars2.githubusercontent.com/u/11642039?v=4" width="100px;" alt="Sohan Soni"/><br /><sub><b>Sohan Soni</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=sohansoni" title="Code">💻</a></td>
     <td align="center"><a href="http://gearsdigital.com"><img src="https://avatars3.githubusercontent.com/u/965069?v=4" width="100px;" alt="Steffen Giers"/><br /><sub><b>Steffen Giers</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=gearsdigital" title="Code">💻</a></td>
   </tr>
 </table>

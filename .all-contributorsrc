@@ -6,6 +6,15 @@
   "commit": false,
   "contributors": [
     {
+      "login": "sohansoni",
+      "name": "Sohan Soni",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11642039?v=4",
+      "profile": "https://github.com/sohansoni",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "gearsdigital",
       "name": "Steffen Giers",
       "avatar_url": "https://avatars3.githubusercontent.com/u/965069?v=4",
