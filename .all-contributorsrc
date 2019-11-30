@@ -22,10 +22,20 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "maurycyg",
+      "name": "Maurycy Gosciniak",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/701197?v=4",
+      "profile": "https://github.com/maurycyg",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "karma-sonarqube-reporter",
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=round-square)](#contributors)",
   "projectOwner": "fadc80",
   "repoType": "github",
   "repoHost": "https://github.com"
