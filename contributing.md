@@ -29,7 +29,7 @@ Tests are stored in the `specs` folder
 ## Check tests pass
 
 ```
-npm test
+npm run test
 ```
 
 ## Submit your changes
@@ -44,10 +44,11 @@ git push
 
 ## Create a pull request
 
-For beginners, we recommend reading: [how to create a pull request][2]
+[How to create a pull request][2]
 
-Post the following comment on your PR to be added 
-to our all-contributors list 
+## Updade all-contributors list
+
+Post the following comment on your PR:
 
 @all-contributors please add `[user]`<sup>1</sup> for `[contribution]`
 <sup>2</sup>
