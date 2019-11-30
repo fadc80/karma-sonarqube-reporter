@@ -49,6 +49,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "mesche",
+      "name": "Esche",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/7409025?v=4",
+      "profile": "http://www.blogging-it.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
