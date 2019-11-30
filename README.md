@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/fadc80/karma-sonarqube-reporter.svg?branch=master)](https://travis-ci.org/fadc80/karma-sonarqube-reporter)
 [![Coverage Status](https://coveralls.io/repos/github/fadc80/karma-sonarqube-reporter/badge.svg?branch=master)](https://coveralls.io/github/fadc80/karma-sonarqube-reporter?branch=master)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=karma-sonarqube-reporter&metric=alert_status)](https://sonarcloud.io/dashboard/index/karma-sonarqube-reporter)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=round-square)](#contributors)
 > [Karma][1] reporter plugin for generating [SonarQube][2] generic test reports.
 
 ## Requirements
@@ -89,3 +90,19 @@ That's all!
 [4]: https://github.com/angular/angular-cli
 [5]: https://docs.sonarqube.org/display/SONAR/Generic+Test+Data#GenericTestData-GenericExecution
 [6]: https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/sohansoni"><img src="https://avatars2.githubusercontent.com/u/11642039?v=4" width="100px;" alt="Sohan Soni"/><br /><sub><b>Sohan Soni</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=sohansoni" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
