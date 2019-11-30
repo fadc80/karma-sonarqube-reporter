@@ -44,7 +44,7 @@ git push
 
 ## Create a pull request
 
-[How to create a pull request][2]
+For beginners, we recommend reading: [how to create a pull request][2]
 
 Post the following comment on it to be added 
 to our all-contributors list 
@@ -52,7 +52,7 @@ to our all-contributors list
 @all-contributors please add `[user]`<sup>1</sup> for `[contribution]`
 <sup>2</sup>
 
-<sup>1</sup> Your github user (e.g. @fadc80)
+<sup>1</sup> Your github user (e.g. @fadc80)  
 <sup>2</sup> [Emojis and contributions types][3]
 
 [1]:https://help.github.com/en/articles/fork-a-repo
