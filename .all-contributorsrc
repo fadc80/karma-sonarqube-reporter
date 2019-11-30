@@ -40,6 +40,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "helabenkhalfallah",
+      "name": "Héla Ben Khalfallah",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1331451?v=4",
+      "profile": "http://helabenkhalfallah.e-monsite.com/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
