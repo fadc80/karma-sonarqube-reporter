@@ -46,7 +46,7 @@ git push
 
 [How to create a pull request][2]
 
-## Updade all-contributors list
+## Updade contributors list
 
 Post the following comment on your PR:
 
