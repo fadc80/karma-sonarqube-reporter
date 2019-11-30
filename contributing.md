@@ -46,7 +46,7 @@ git push
 
 For beginners, we recommend reading: [how to create a pull request][2]
 
-Post the following comment on it to be added 
+Post the following comment on your PR to be added 
 to our all-contributors list 
 
 @all-contributors please add `[user]`<sup>1</sup> for `[contribution]`
