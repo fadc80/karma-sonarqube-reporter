@@ -46,11 +46,11 @@ git push
 
 [How to create a pull request][2]
 
-## Updade contributors list
+## Update our contributors list
 
 Post the following comment on your PR:
 
-@all-contributors please add `[user]`<sup>1</sup> for `[contribution]`
+@all-contributors please add `user`<sup>1</sup> for `contribution`
 <sup>2</sup>
 
 <sup>1</sup> Your github user (e.g. @fadc80)  
