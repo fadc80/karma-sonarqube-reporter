@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "chai-xml": "0.3.2",
-    "coveralls": "3.0.9",
+    "coveralls": "3.1.0",
     "jasmine": "3.5.0",
     "jasmine-spec-reporter": "5.0.1",
     "lodash": "4.17.15",
