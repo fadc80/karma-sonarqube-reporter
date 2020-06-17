@@ -38,6 +38,7 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/9366771?v=4",
       "profile": "https://github.com/xfh",
       "contributions": [
+        "code",
         "bug"
       ]
     },
@@ -65,5 +66,6 @@
   "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=round-square)](#contributors)",
   "projectOwner": "fadc80",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "commitConvention": "none"
 }

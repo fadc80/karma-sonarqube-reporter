@@ -32,6 +32,7 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
+    "all-contributors-cli": "^6.16.0",
     "chai-xml": "0.3.2",
     "coveralls": "3.1.0",
     "jasmine": "3.5.0",

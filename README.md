@@ -97,18 +97,21 @@ That's all!
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/sohansoni"><img src="https://avatars2.githubusercontent.com/u/11642039?v=4" width="100px;" alt="Sohan Soni"/><br /><sub><b>Sohan Soni</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=sohansoni" title="Code">💻</a></td>
-    <td align="center"><a href="http://gearsdigital.com"><img src="https://avatars3.githubusercontent.com/u/965069?v=4" width="100px;" alt="Steffen Giers"/><br /><sub><b>Steffen Giers</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=gearsdigital" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/maurycyg"><img src="https://avatars0.githubusercontent.com/u/701197?v=4" width="100px;" alt="Maurycy Gosciniak"/><br /><sub><b>Maurycy Gosciniak</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Amaurycyg" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/xfh"><img src="https://avatars2.githubusercontent.com/u/9366771?v=4" width="100px;" alt="Fabio"/><br /><sub><b>Fabio</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Axfh" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="http://helabenkhalfallah.e-monsite.com/"><img src="https://avatars3.githubusercontent.com/u/1331451?v=4" width="100px;" alt="Héla Ben Khalfallah"/><br /><sub><b>Héla Ben Khalfallah</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Ahelabenkhalfallah" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="http://www.blogging-it.com"><img src="https://avatars2.githubusercontent.com/u/7409025?v=4" width="100px;" alt="Esche"/><br /><sub><b>Esche</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Amesche" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/sohansoni"><img src="https://avatars2.githubusercontent.com/u/11642039?v=4" width="100px;" alt=""/><br /><sub><b>Sohan Soni</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=sohansoni" title="Code">💻</a></td>
+    <td align="center"><a href="http://gearsdigital.com"><img src="https://avatars3.githubusercontent.com/u/965069?v=4" width="100px;" alt=""/><br /><sub><b>Steffen Giers</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=gearsdigital" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/maurycyg"><img src="https://avatars0.githubusercontent.com/u/701197?v=4" width="100px;" alt=""/><br /><sub><b>Maurycy Gosciniak</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Amaurycyg" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/xfh"><img src="https://avatars2.githubusercontent.com/u/9366771?v=4" width="100px;" alt=""/><br /><sub><b>Fabio</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=xfh" title="Code">💻</a> <a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Axfh" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://helabenkhalfallah.e-monsite.com/"><img src="https://avatars3.githubusercontent.com/u/1331451?v=4" width="100px;" alt=""/><br /><sub><b>Héla Ben Khalfallah</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Ahelabenkhalfallah" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://www.blogging-it.com"><img src="https://avatars2.githubusercontent.com/u/7409025?v=4" width="100px;" alt=""/><br /><sub><b>Esche</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Amesche" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
