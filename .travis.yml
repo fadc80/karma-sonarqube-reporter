@@ -18,9 +18,10 @@ before_script:
   - git fetch --unshallow
   - npm install -g @angular/cli
 
+install: npm install
+
 script: 
   - echo "UT against $(node -v)"
-  - npm install
   - npm run test
   - sonar-scanner
 
