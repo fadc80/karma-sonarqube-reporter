@@ -12,7 +12,7 @@ export interface SonarqubeReporterConfiguration {
     /** report for Sonarqube < 6.2 (disabled) */
     legacyMode?: boolean;
     /**
-     * report name callback, accepts also a string (reportName: 'report.xml') to generate a single file
+     * report name callback, accepts also a string to generate a single file
      *
      * Report metadata array:
      * - metadata[0] = browser name
