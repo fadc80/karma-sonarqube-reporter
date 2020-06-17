@@ -130,9 +130,7 @@ function saveReport(filePath, data, legacyMode) {
 }
 
 function createFolder(filePath) {
-  mkdirp.sync(path.dirname(filePath),
-    (error) =>  { if (error) throw error; }
-  );
+  mkdirp.sync(path.dirname(filePath));
 }
 
 function createFile(filePath, data, legacyMode) {
