@@ -3,6 +3,7 @@
   "version": "1.3.0",
   "description": "A karma reporter plugin for generating Sonarqube generic test reports",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "nyc jasmine && nyc report --reporter=lcov --reporter=text-lcov | coveralls"
   },
@@ -21,10 +22,13 @@
   },
   "homepage": "https://github.com/fadc80/karma-sonarqube-reporter#readme",
   "dependencies": {
+    "@types/glob": "^7.1.2",
+    "@types/karma": "*",
+    "@types/mkdirp": "^0.5.2",
     "clone-regexp": "^2.0.0",
     "glob": "^7.1.2",
     "js2xmlparser": "^4.0.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^0.5.5",
     "winston": "^3.0.0"
   },
   "devDependencies": {
