@@ -13,7 +13,9 @@ const testFileData = {
     'describe(\'s7.2\', function() { it(\'d7.2\', function() {}); });' +
     'describe(\'s7.3\', function() { it(\'d7.3\', function() {}); });' +
     'describe(\'s7.4\', function() { describe(\'s7.4.1\'+\'text\', function() { ' +
-      'it(\'d7.4.1\'+\'text\', function() {}); }); });',
+      'it(\'d7.4.1\'+\'text\', function() {}); }); });' +
+    'describe(\'s7.5\', function() { describe(\'s7.5.1\' + \n\' text\', function() { ' +
+      'it(\'d7.5.1\' + \n\' text\', function() {}); }); });',
   'path/t8.spec.js': 'describe.skip(\'s8\', function() { it.skip(\'d8\', function() {}); });',
   'path/t9.spec.js':'describe(\'s9\', function() { xit(\'d9.1\', function() {}); });' +
     'describe(\'s9.2\', function() { it.skip(\'d9.2\', function() {}); });' +
@@ -38,11 +40,11 @@ const parsedTestFiles = {
   'path/t5.spec.js': { describe: ['\\\"s5\\\"'], dynamicDescribe: [], it: ['\\\"d5\\\"'], dynamicIt: [] },
   'path/t6.spec.js': { describe: ['s6\"\\\\\'\\\\\'\"'], dynamicDescribe: [],
       it: ['d6\"\\\\\'\\\\\'\"'], dynamicIt: [] },
-  'path/t7.spec.js': { describe: ['s7', 's7.2', 's7.3', 's7.4', 's7.4.1'], dynamicDescribe: [],
-      it: ['d7.1', 'd7.2', 'd7.3', 'd7.4.1'], dynamicIt: [] },
+  'path/t7.spec.js': { describe: ['s7', 's7.2', 's7.3', 's7.4', 's7.4.1text', 's7.5', 's7.5.1 text'], dynamicDescribe: [],
+      it: ['d7.1', 'd7.2', 'd7.3', 'd7.4.1text', 'd7.5.1 text'], dynamicIt: [] },
   'path/t8.spec.js': { describe: ['s8'], dynamicDescribe: [], it: ['d8'], dynamicIt: [] },
-  'path/t9.spec.js': { describe: ['s9', 's9.2', 's9.3', 's9.4', 's9.4.1'], dynamicDescribe: [],
-      it: ['d9.1', 'd9.2', 'd9.3', 'd9.4.1'], dynamicIt: [] },
+  'path/t9.spec.js': { describe: ['s9', 's9.2', 's9.3', 's9.4', 's9.4.1text'], dynamicDescribe: [],
+      it: ['d9.1', 'd9.2', 'd9.3', 'd9.4.1text'], dynamicIt: [] },
   'path/t10.spec.js': {
     describe: ['s10', 's10.2 ${someVar}', 's10.2 clash ${someVar}', 's10.3 ${someVar} multiple ${someVar}',
       's10.4', 's10.4.2', 's10.5'],
@@ -169,8 +171,8 @@ describe('Path finder tests', function() {
       it('7th test file match suite 7.4.1 and description 7.4.1 (nested)', function() {
         var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
         var path = paths['path/t7.spec.js'];
-        expect(path.describe[4]).toBe('s7.4.1');
-        expect(path.it[3]).toBe('d7.4.1');
+        expect(path.describe[4]).toBe('s7.4.1text');
+        expect(path.it[3]).toBe('d7.4.1text');
       });
 
       it("9st test file match suite 9 and description 9 with skipped test", function() {
@@ -228,6 +230,7 @@ describe('Path finder tests', function() {
       expect(pathFinder.testFile(parsedTestFiles, 's7',  'd7.1')).toBe('path/t7.spec.js');
       expect(pathFinder.testFile(parsedTestFiles, 's7.2', 'd7.2')).toBe('path/t7.spec.js');
       expect(pathFinder.testFile(parsedTestFiles, 's7.3', 'd7.3')).toBe('path/t7.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's7.4.1text', 'd7.4.1text')).toBe('path/t7.spec.js');
     });
 
     it('Suite 10 and description 10 found in test file 10', function() {
