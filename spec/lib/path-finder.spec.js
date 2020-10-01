@@ -29,7 +29,8 @@ const testFileData = {
       'describe(\'s10.4\', function() { it(\'d10.4 ${array.map(v => `nested ${v}`)}\', function() {}); });' +
       'describe(\'s10.4.2\', function() { it(\'d10.4 clash ${someVar}\', function() {}); });' +
       'describe(\'s10.5\', function() { ' +
-        'it(\'d10.5 ${array.map(v => if (something) { return { a: `a` }} return { a: `b`}}\', function() {}); });',
+        'it(\'d10.5 ${array.map(v => if (something) { return { a: `a` }} return { a: `b`}}\', function() {}); });' +
+      'describe(\'s10.6\', function() { it(\'d10.6 + [${someVar}]\', function() {}); });',
 }
 
 const parsedTestFiles = {
@@ -47,11 +48,12 @@ const parsedTestFiles = {
       it: ['d9.1', 'd9.2', 'd9.3', 'd9.4.1text'], dynamicIt: [] },
   'path/t10.spec.js': {
     describe: ['s10', 's10.2 ${someVar}', 's10.2 clash ${someVar}', 's10.3 ${someVar} multiple ${someVar}',
-      's10.4', 's10.4.2', 's10.5'],
-    dynamicDescribe: [/s10.2 .*/, /s10.2 clash .*/, /s10.3 .* multiple .*/],
+      's10.4', 's10.4.2', 's10.5', 's10.6'],
+    dynamicDescribe: [/s10\.2 .*/, /s10\.2 clash .*/, /s10\.3 .* multiple .*/],
     it: ['d10.1 ${someVar} multi ${someVar}', 'd10.2', 'd10.2', 'd10.3', 'd10.4 ${array.map(v => `nested ${v}`)}',
-      'd10.4 clash ${someVar}', 'd10.5 ${array.map(v => if (something) { return { a: `a` }} return { a: `b`}}'],
-    dynamicIt: [/d10.1 .* multi .*/, /d10.4 .*/, /d10.4 clash .*/, /d10.5 .*/] }
+      'd10.4 clash ${someVar}', 'd10.5 ${array.map(v => if (something) { return { a: `a` }} return { a: `b`}}',
+      'd10.6 + [${someVar}]'],
+    dynamicIt: [/d10\.1 .* multi .*/, /d10\.4 .*/, /d10\.4 clash .*/, /d10\.5 .*/, /d10\.6 \+ \[.*\]/] }
 }
 
 describe('Path finder tests', function() {
