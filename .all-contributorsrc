@@ -5,6 +5,17 @@
   "imageSize": 100,
   "commit": false,
   "contributors": [
+{
+      "login": "fadc80",
+      "name": "Fernando Costa",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12335761?v=4",
+      "profile": "https://github.com/fadc80",
+      "contributions": [
+        "code",
+        "bug",
+        "doc"
+      ]
+    },  
     {
       "login": "sohansoni",
       "name": "Sohan Soni",
@@ -70,7 +81,7 @@
       ]
     }
   ],
-  "contributorsPerLine": 7,
+  "contributorsPerLine": 6,
   "projectName": "karma-sonarqube-reporter",
   "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=round-square)](#contributors)",
   "projectOwner": "fadc80",
