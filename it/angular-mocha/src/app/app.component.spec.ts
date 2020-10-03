@@ -17,7 +17,7 @@ describe('AppComponent', () => {
     expect(app).to.be.ok;
   });
 
-  it.skip(`should have as title 'app1'`, () => {
+  it(`should have as title 'app1'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).to.equal('app1');
