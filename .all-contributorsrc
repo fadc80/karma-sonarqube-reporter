@@ -59,6 +59,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "jbardon",
+      "name": "Jérémy Bardon",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/9324783?v=4",
+      "profile": "https://github.com/jbardon",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
