@@ -37,7 +37,7 @@ sonarqubeReporter: {
   outputFolder: 'reports',    // report destination
   legacyMode: false,          // report for Sonarqube < 6.2 (disabled)
   reportName: (metadata) => { // report name callback, but accepts also a 
-                              // string to generate a single file
+                              // string (file name) to generate a single file
     /**
      * Report metadata array:
      * - metadata[0] = browser name
