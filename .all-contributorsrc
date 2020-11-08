@@ -5,7 +5,7 @@
   "imageSize": 100,
   "commit": false,
   "contributors": [
-{
+    {
       "login": "fadc80",
       "name": "Fernando Costa",
       "avatar_url": "https://avatars3.githubusercontent.com/u/12335761?v=4",
@@ -15,7 +15,7 @@
         "bug",
         "doc"
       ]
-    },  
+    },
     {
       "login": "sohansoni",
       "name": "Sohan Soni",
@@ -76,6 +76,15 @@
       "name": "Jérémy Bardon",
       "avatar_url": "https://avatars2.githubusercontent.com/u/9324783?v=4",
       "profile": "https://github.com/jbardon",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Fadelis",
+      "name": "Paulius Paplauskas",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6364106?v=4",
+      "profile": "https://github.com/Fadelis",
       "contributions": [
         "code"
       ]

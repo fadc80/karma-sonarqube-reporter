@@ -13,5 +13,6 @@ echo ${descriptions[$1]}
 cd ${folders[$1]}
 
 npm install
+npm link ../../
 npm run test
 sonar-scanner

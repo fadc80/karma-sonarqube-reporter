@@ -28,4 +28,10 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to app1!');
   });
+
+  ['a', 'b', 'c'].forEach((item: any) => {
+    it(`basic_dynamic_testcase_${item}`, () => {
+      expect(true).toBe(true);
+   });
+  });
 });
