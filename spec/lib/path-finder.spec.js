@@ -13,28 +13,47 @@ const testFileData = {
     'describe(\'s7.2\', function() { it(\'d7.2\', function() {}); });' +
     'describe(\'s7.3\', function() { it(\'d7.3\', function() {}); });' +
     'describe(\'s7.4\', function() { describe(\'s7.4.1\'+\'text\', function() { ' +
-      'it(\'d7.4.1\'+\'text\', function() {}); }); });',
+      'it(\'d7.4.1\'+\'text\', function() {}); }); });' +
+    'describe(\'s7.5\', function() { describe(\'s7.5.1\' + \n\' text\', function() { ' +
+      'it(\'d7.5.1\' + \n\' text\', function() {}); }); });',
   'path/t8.spec.js': 'describe.skip(\'s8\', function() { it.skip(\'d8\', function() {}); });',
   'path/t9.spec.js':'describe(\'s9\', function() { xit(\'d9.1\', function() {}); });' +
     'describe(\'s9.2\', function() { it.skip(\'d9.2\', function() {}); });' +
     'describe(\'s9.3\', function() { xit(\'d9.3\', function() {}); });' +
     'describe(\'s9.4\', function() { describe.skip(\'s9.4.1\'+\'text\', function() { ' +
     'fit(\'d9.4.1\'+\'text\', function() {}); }); });',
+  'path/t10.spec.js':'describe(\'s10\', function() { it(\'d10.1 ${someVar} multi ${someVar}\', function() {}); });' +
+      'describe(\'s10.2 ${someVar}\', function() { it(\'d10.2\', function() {}); });' +
+      'describe(\'s10.2 clash ${someVar}\', function() { it(\'d10.2\', function() {}); });' +
+      'describe(\'s10.3 ${someVar} multiple ${someVar}\', function() { it(\'d10.3\', function() {}); });' +
+      'describe(\'s10.4\', function() { it(\'d10.4 ${array.map(v => `nested ${v}`)}\', function() {}); });' +
+      'describe(\'s10.4.2\', function() { it(\'d10.4 clash ${someVar}\', function() {}); });' +
+      'describe(\'s10.5\', function() { ' +
+        'it(\'d10.5 ${array.map(v => if (something) { return { a: `a` }} return { a: `b`}}\', function() {}); });' +
+      'describe(\'s10.6\', function() { it(\'d10.6 + [${someVar}]\', function() {}); });',
 }
 
 const parsedTestFiles = {
-  'path/t1.spec.js': { describe: ['s1'], it: ['d1']},
-  'path/t2.spec.js': { describe: ['s2'], it: ['d2']},
-  'path/t3.spec.js': { describe: ['s3'], it: ['d3.1', 'd3.2']},
-  'path/t4.spec.js': { describe: ['\\\'s4\\\''], it: ['\\\'d4\\\'']},
-  'path/t5.spec.js': { describe: ['\\\"s5\\\"'], it: ['\\\"d5\\\"']},
-  'path/t6.spec.js': { describe: ['s6\"\\\\\'\\\\\'\"'], it: ['d6\"\\\\\'\\\\\'\"']},
-  'path/t7.spec.js': { describe: ['s7', 's7.2', 's7.3', 's7.4', 's7.4.1'],
-     it: ['d7.1', 'd7.2', 'd7.3', 'd7.4.1']},
-  'path/t8.spec.js': { describe: ['s8'], it: ['d8'] },
-  'path/t9.spec.js': { describe: ['s9', 's9.2', 's9.3', 's9.4', 's9.4.1'],
-      it: ['d9.1', 'd9.2', 'd9.3', 'd9.4.1'],
-  }
+  'path/t1.spec.js': { describe: ['s1'], dynamicDescribe: [], it: ['d1'], dynamicIt: [] },
+  'path/t2.spec.js': { describe: ['s2'], dynamicDescribe: [], it: ['d2'], dynamicIt: [] },
+  'path/t3.spec.js': { describe: ['s3'], dynamicDescribe: [], it: ['d3.1', 'd3.2'], dynamicIt: [] },
+  'path/t4.spec.js': { describe: ['\\\'s4\\\''], dynamicDescribe: [], it: ['\\\'d4\\\''], dynamicIt: [] },
+  'path/t5.spec.js': { describe: ['\\\"s5\\\"'], dynamicDescribe: [], it: ['\\\"d5\\\"'], dynamicIt: [] },
+  'path/t6.spec.js': { describe: ['s6\"\\\\\'\\\\\'\"'], dynamicDescribe: [],
+      it: ['d6\"\\\\\'\\\\\'\"'], dynamicIt: [] },
+  'path/t7.spec.js': { describe: ['s7', 's7.2', 's7.3', 's7.4', 's7.4.1text', 's7.5', 's7.5.1 text'], dynamicDescribe: [],
+      it: ['d7.1', 'd7.2', 'd7.3', 'd7.4.1text', 'd7.5.1 text'], dynamicIt: [] },
+  'path/t8.spec.js': { describe: ['s8'], dynamicDescribe: [], it: ['d8'], dynamicIt: [] },
+  'path/t9.spec.js': { describe: ['s9', 's9.2', 's9.3', 's9.4', 's9.4.1text'], dynamicDescribe: [],
+      it: ['d9.1', 'd9.2', 'd9.3', 'd9.4.1text'], dynamicIt: [] },
+  'path/t10.spec.js': {
+    describe: ['s10', 's10.2 ${someVar}', 's10.2 clash ${someVar}', 's10.3 ${someVar} multiple ${someVar}',
+      's10.4', 's10.4.2', 's10.5', 's10.6'],
+    dynamicDescribe: [/s10\.2 .*/, /s10\.2 clash .*/, /s10\.3 .* multiple .*/],
+    it: ['d10.1 ${someVar} multi ${someVar}', 'd10.2', 'd10.2', 'd10.3', 'd10.4 ${array.map(v => `nested ${v}`)}',
+      'd10.4 clash ${someVar}', 'd10.5 ${array.map(v => if (something) { return { a: `a` }} return { a: `b`}}',
+      'd10.6 + [${someVar}]'],
+    dynamicIt: [/d10\.1 .* multi .*/, /d10\.4 .*/, /d10\.4 clash .*/, /d10\.5 .*/, /d10\.6 \+ \[.*\]/] }
 }
 
 describe('Path finder tests', function() {
@@ -154,8 +173,8 @@ describe('Path finder tests', function() {
       it('7th test file match suite 7.4.1 and description 7.4.1 (nested)', function() {
         var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
         var path = paths['path/t7.spec.js'];
-        expect(path.describe[4]).toBe('s7.4.1');
-        expect(path.it[3]).toBe('d7.4.1');
+        expect(path.describe[4]).toBe('s7.4.1text');
+        expect(path.it[3]).toBe('d7.4.1text');
       });
 
       it("9st test file match suite 9 and description 9 with skipped test", function() {
@@ -214,6 +233,20 @@ describe('Path finder tests', function() {
       expect(pathFinder.testFile(parsedTestFiles, 's7.2', 'd7.2')).toBe('path/t7.spec.js');
       expect(pathFinder.testFile(parsedTestFiles, 's7.3', 'd7.3')).toBe('path/t7.spec.js');
       expect(pathFinder.testFile(parsedTestFiles, 's7.4.1text', 'd7.4.1text')).toBe('path/t7.spec.js');
+    });
+
+    it('Suite 10 and description 10 found in test file 10', function() {
+      expect(pathFinder.testFile(parsedTestFiles, 's10',  'd10.1 a multi b')).toBe('path/t10.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's10',  'd10.1 b multi a')).toBe('path/t10.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's10.2 a', 'd10.2')).toBe('path/t10.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's10.2 b', 'd10.2')).toBe('path/t10.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's10.3 a multiple b', 'd10.3')).toBe('path/t10.spec.js');
+      expect(pathFinder.testFile(parsedTestFiles, 's10.3 b multiple a', 'd10.3')).toBe('path/t10.spec.js');
+    });
+
+    it('Suite 10 should not find test file when multiple patterns clash', function() {
+      expect(pathFinder.testFile(parsedTestFiles, 's10.2 clash a', 'd10.2')).toBeUndefined();
+      expect(pathFinder.testFile(parsedTestFiles, 's10.4', 'd10.4 clash a')).toBeUndefined();
     });
   });
 });
