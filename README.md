@@ -1,6 +1,6 @@
 # karma-sonarqube-reporter
 [![npm version](https://img.shields.io/npm/v/karma-sonarqube-reporter.svg?style=round-square)](https://www.npmjs.com/package/karma-sonarqube-reporter)
-[![Build Status](https://travis-ci.org/fadc80/karma-sonarqube-reporter.svg?branch=master)](https://travis-ci.org/fadc80/karma-sonarqube-reporter)
+[![Build Status](https://travis-ci.com/fadc80/karma-sonarqube-reporter.svg?branch=master)](https://app.travis-ci.com/github/fadc80/karma-sonarqube-reporter)
 [![Coverage Status](https://coveralls.io/repos/github/fadc80/karma-sonarqube-reporter/badge.svg?branch=master)](https://coveralls.io/github/fadc80/karma-sonarqube-reporter?branch=master)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=karma-sonarqube-reporter&metric=alert_status)](https://sonarcloud.io/dashboard/index/karma-sonarqube-reporter)
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=round-square)](#contributors)
