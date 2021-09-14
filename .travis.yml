@@ -20,7 +20,7 @@ install: npm install
 
 script: 
   - echo "UT against $(node -v)"
-  - npm run 
+  - npm run test
   - sonar-scanner
 
 jobs:
