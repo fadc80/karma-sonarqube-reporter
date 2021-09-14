@@ -16,7 +16,7 @@ before_script:
   - git fetch --unshallow
   - npm install -g @angular/cli
 
-install: npm ci
+install: npm install
 
 script: 
   - echo "UT against $(node -v)"
