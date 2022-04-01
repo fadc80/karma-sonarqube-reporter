@@ -13,7 +13,8 @@ const config1 = {
     legacyMode: false,
     reportName: (metadata) => {
       return metadata[0].concat('.xml');
-    }
+    },
+    absolutePaths: false
   }
 };
 
@@ -22,8 +23,9 @@ const config2 = {
     outputFolder: 'reports/config2',
     encoding: 'iso-8859-1',
     legacyMode: true,
-    reportName: 'result.xml'
-  }
+    reportName: 'result.xml',
+    absolutePaths: false
+  },
 };
 
 describe('Sonarqube reporter tests', function() {
@@ -35,7 +37,7 @@ describe('Sonarqube reporter tests', function() {
   const ie = 'IE 1.0.0 (Linux 1.0.0)'
   beforeAll(function() {
     mock('../lib/path-finder', {
-      parseTestFiles: function(pattern, encoding) {
+      parseTestFiles: function(pattern, encoding, absolutePaths) {
         return {
           's1': { 'd1': 'test/file1/path' },
           's2': { 'd2': 'test/file2/path' },
