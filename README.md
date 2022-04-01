@@ -112,6 +112,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.blogging-it.com"><img src="https://avatars2.githubusercontent.com/u/7409025?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Esche</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/issues?q=author%3Amesche" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/jbardon"><img src="https://avatars2.githubusercontent.com/u/9324783?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jérémy Bardon</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=jbardon" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Fadelis"><img src="https://avatars3.githubusercontent.com/u/6364106?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paulius Paplauskas</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=Fadelis" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/peteyoungs"><img src="https://avatars.githubusercontent.com/u/102791049?v=4?s=100" width="100px;" alt=""/><br /><sub><b>peteyoungs</b></sub></a><br /><a href="https://github.com/fadc80/karma-sonarqube-reporter/commits?author=peteyoungs" title="Code">💻</a></td>
   </tr>
 </table>
 
