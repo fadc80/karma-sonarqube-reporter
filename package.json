@@ -22,11 +22,11 @@
   },
   "homepage": "https://github.com/fadc80/karma-sonarqube-reporter#readme",
   "dependencies": {
-    "@types/glob": "^7.1.2",
+    "@types/glob": "^8.0.0",
     "@types/karma": "*",
     "@types/mkdirp": "^1.0.0",
     "clone-regexp": "^3.0.0",
-    "glob": "^7.1.2",
+    "glob": "^8.0.0",
     "js2xmlparser": "^4.0.0",
     "mkdirp": "^1.0.0",
     "winston": "^3.0.0"
