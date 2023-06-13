@@ -58,6 +58,7 @@ const parsedTestFiles = {
 
 describe('Path finder tests', function() {
   var pathFinder;
+  var globOptions;
 
   beforeAll(function() {
 
@@ -68,7 +69,8 @@ describe('Path finder tests', function() {
     });
 
     mock('glob', {
-      sync: function(pattern) {
+      sync: function(pattern, options) {
+        globOptions = options;
         return Object.keys(testFileData);
       }
     });
@@ -88,29 +90,33 @@ describe('Path finder tests', function() {
     mock.stop('fs');
   });
 
+  beforeEach(() => {
+    globOptions = undefined;
+  });
+
   describe('Parsing test files', function() {
     describe('Test files with single test cases', function() {
       it('Parsed test paths matched expected test paths', function() {
         expect(lodash.isEqual(pathFinder.parseTestFiles(
-          '**/*.spec.ts', 'utf-8'), parsedTestFiles)).toBe(true);
+          '**/*.spec.ts', 'utf-8', false), parsedTestFiles)).toBe(true);
       });
 
       it('1st test file match suite 1 and description 1', function() {
-        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
         var path = paths['path/t1.spec.js'];
         expect(path.describe[0]).toBe('s1');
         expect(path.it[0]).toBe('d1');
       });
 
       it('2sd test file match suite 2 and description 2', function() {
-        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
         var path = paths['path/t2.spec.js'];
         expect(path.describe[0]).toBe('s2');
         expect(path.it[0]).toBe('d2');
       });
 
       it('3rd test file match suite 3 and description 3.1 and 3.2', function() {
-        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
         var path = paths['path/t3.spec.js'];
         expect(path.describe[0]).toBe('s3');
         expect(path.it[0]).toBe('d3.1');
@@ -126,21 +132,21 @@ describe('Path finder tests', function() {
 
       describe('Test cases with quoted text', function() {
         it('4rd test file match suite and description with single quotes', function() {
-          var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+          var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
           var path = paths['path/t4.spec.js'];
           expect(path.describe[0]).toBe('\\\'s4\\\'');
           expect(path.it[0]).toBe('\\\'d4\\\'');
         });
 
         it('5th test file match suite and description with double quotes', function() {
-          var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+          var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
           var path = paths['path/t5.spec.js'];
           expect(path.describe[0]).toBe('\\\"s5\\\"');
           expect(path.it[0]).toBe('\\\"d5\\\"');
         });
 
         it('6th test file match suite and description with mixed single and double quotes', function() {
-          var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+          var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
           var path = paths['path/t6.spec.js'];
           expect(path.describe[0]).toBe('s6\"\\\\\'\\\\\'\"');
           expect(path.it[0]).toBe('d6\"\\\\\'\\\\\'\"');
@@ -150,39 +156,53 @@ describe('Path finder tests', function() {
 
     describe('Test files with multiple test cases', function() {
       it('7th test file match suite 7 and description 7.1', function() {
-        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
         var path = paths['path/t7.spec.js'];
         expect(path.describe[0]).toBe('s7');
         expect(path.it[0]).toBe('d7.1');
       });
 
       it('7th test file match suite 7.2 and description 7.2 (sibling)', function() {
-        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
         var path = paths['path/t7.spec.js'];
         expect(path.describe[1]).toBe('s7.2');
         expect(path.it[1]).toBe('d7.2');
       });
 
       it('7th test file match suite 7.3 and description 7.3 (sibling)', function() {
-        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
         var path = paths['path/t7.spec.js'];
         expect(path.describe[2]).toBe('s7.3');
         expect(path.it[2]).toBe('d7.3');
       });
 
       it('7th test file match suite 7.4.1 and description 7.4.1 (nested)', function() {
-        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8');
+        var paths = pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
         var path = paths['path/t7.spec.js'];
         expect(path.describe[4]).toBe('s7.4.1text');
         expect(path.it[3]).toBe('d7.4.1text');
       });
 
       it("9st test file match suite 9 and description 9 with skipped test", function() {
-        var paths = pathFinder.parseTestFiles("**/*.spec.ts", "utf-8");
+        var paths = pathFinder.parseTestFiles("**/*.spec.ts", "utf-8", false);
         var path = paths["path/t9.spec.js"];
         expect(path.describe[0]).toBe("s9");
         expect(path.it[0]).toBe("d9.1");
         expect(path.it[1]).toBe("d9.2");
+      });
+    });
+
+    describe('Test absolute path parameter', function () {
+      it('absolute path false passed to glob', function () {
+        expect(globOptions).toBeUndefined();
+        pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', false);
+        expect(globOptions).toEqual({absolute: false});
+      });
+
+      it('absolute path true passed to glob', function () {
+        expect(globOptions).toBeUndefined();
+        pathFinder.parseTestFiles('**/*.spec.ts', 'utf-8', true);
+        expect(globOptions).toEqual({absolute: true});
       });
     });
   });

@@ -21,6 +21,8 @@ export interface SonarqubeReporterConfiguration {
      * - metadata[3] = platform version
      */
     reportName: ((metadata: string[]) => string) | string;
+    /** absolute file path in report */
+    absolutePaths: boolean;
 }
 
 declare module 'karma' {

@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "all-contributors-cli": "6.20.0",
+    "chai": "4.3.6",
     "chai-xml": "0.4.0",
     "coveralls": "3.1.1",
     "jasmine": "3.10.0",

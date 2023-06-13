@@ -10,6 +10,7 @@ const OUTPUT_FOLDER = 'reports';
 const FILE_PATTERN = '**/*spec.ts';
 const ENCODING = 'utf-8';
 const LEGACY_MODE = false;
+const ABSOLUTE_PATHS = false;
 
 const REPORT_NAME = (metadata) => {
     return metadata.concat('xml').join('.');
@@ -30,9 +31,10 @@ var sonarqubeReporter = function(baseReporterDecorator, config,
     ? () => sonarqubeConfig.reportName
     : sonarqubeConfig.reportName || REPORT_NAME;
   var legacyMode = sonarqubeConfig.legacyMode || LEGACY_MODE;
+  var absolutePaths = sonarqubeConfig.absolutePaths || ABSOLUTE_PATHS;
 
   var paths = pathfinder.parseTestFiles(
-    pattern, encoding);
+    pattern, encoding, absolutePaths);
 
   var reports = {};
 
